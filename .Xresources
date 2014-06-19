@@ -77,6 +77,9 @@ urxvt.borderless:         true
 urxvt.transparent:        false
 urxvt.fading:             0
 urxvt.urlLauncher:        /usr/bin/firefox
+urxvt.savelines:          0
+urxvt.scrollWithBuffer:   false
+urxvt.skipScroll:         true
 
 ! fix for ugly font spacing
 urxvt.letterSpace:        -1
