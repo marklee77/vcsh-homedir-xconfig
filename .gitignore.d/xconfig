@@ -5,7 +5,7 @@
 !.config/dunst/*
 !.config/mr
 !.config/mr/config.d
-!.config/mr/config.d/xconfig.vcsh
+!.config/mr/config.d/xconfig
 !.config/user-dirs.dirs
 !.dmrc
 !.fonts.conf.d
