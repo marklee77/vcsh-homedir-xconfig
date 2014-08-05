@@ -36,7 +36,7 @@ unclutter -idle 5 -root &
 nm-applet --sm-disable &
 #gnome-sound-applet &
 blueman-applet &
-dropbox start &
+#dropbox start &
 #vidalia &
 
 # start window manager
