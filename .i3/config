@@ -7,8 +7,8 @@ new_window 1pixel
 for_window [class="^.*"] border pixel 1
 
 # font for window titles. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-#font pango:DejaVu Sans Mono 10
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:DejaVu Sans Mono 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -24,7 +24,7 @@ bindsym $mod+Shift+Q kill
 bindsym $mod+d exec dmenu_run -b
 
 # start screensaver lock
-bindsym Control+$mod+l exec i3lock -d -c 002b36
+bindsym Control+$mod+l exec laptop-lock
 
 # change focus
 bindsym $mod+h focus left
@@ -152,7 +152,7 @@ bindsym $mod+r mode "resize"
 ## Special Keys
 
 # suspend
-bindsym XF86Sleep exec --no-startup-id i3lock -d -c 002b36 && dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+bindsym XF86Sleep exec --no-startup-id laptop-suspend
 
 # monitor (need to test)
 # bindsym XF86Display exec --no-startup-id xrandr..
