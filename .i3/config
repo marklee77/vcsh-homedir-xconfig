@@ -24,11 +24,7 @@ bindsym $mod+Shift+Q kill
 bindsym $mod+d exec dmenu_run -b
 
 # start screensaver lock
-#bindsym Control+$mod+l exec i3lock -d -c 000000
-bindsym Control+$mod+l exec xscreensaver-command -lock
-
-# screen shot FIXME: add notification
-bindsym $mod+Print exec scrot
+bindsym Control+$mod+l exec i3lock -d -c 002b36
 
 # change focus
 bindsym $mod+h focus left
@@ -152,6 +148,25 @@ bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
+
+## Special Keys
+
+# suspend
+bindsym XF86Sleep exec --no-startup-id i3lock -d -c 002b36 && dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+
+# monitor (need to test)
+# bindsym XF86Display exec --no-startup-id xrandr..
+
+# audio
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -c 1 set Master 2dB+ unmute && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -c 1 set Master 2dB- unmute && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec --no-startup-id amixer -q -c 1 set Master toggle && amixer -q -c 1 set Headphone on && amixer -q -c 1 set PCM on && killall -SIGUSR1 i3status
+bindsym XF87AudioMicMute exec --no-startup-id amixer -q -c 1 set Mic toggle && killall -SIGUSR1 i3status
+
+# brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
