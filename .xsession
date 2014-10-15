@@ -35,7 +35,7 @@ bluetooth off
 #dropbox start &
 #vidalia &
 
-powermon.sh &
+laptop-powerd &
 
 # start window manager
 exec /usr/bin/i3

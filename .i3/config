@@ -152,7 +152,7 @@ bindsym $mod+r mode "resize"
 ## Special Keys
 
 # suspend
-bindsym XF86Sleep exec --no-startup-id laptop-suspend
+bindsym XF86Sleep exec --no-startup-id laptop-smartsleep
 
 # monitor (need to test)
 # bindsym XF86Display exec --no-startup-id xrandr..
