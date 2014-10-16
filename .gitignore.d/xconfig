@@ -6,7 +6,6 @@
 !.config/mr
 !.config/mr/config.d
 !.config/mr/config.d/xconfig
-!.config/user-dirs.dirs
 !.dmrc
 !.fonts.conf.d
 !.fonts.conf.d/*
