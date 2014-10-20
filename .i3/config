@@ -3,9 +3,10 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-new_window pixel 0
-new_float normal
-for_window [class="^.*"] border pixel 1
+new_window 1pixel
+new_float normal 1
+hide_edge_borders both
+#for_window [class="^.*"] border pixel 1
 
 focus_follows_mouse no
 
@@ -79,6 +80,7 @@ bindsym $mod+a focus parent
 #bindcode $mod+d focus child
 
 # switch to workspace
+workspace_auto_back_and_forth yes
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
