@@ -1,8 +1,5 @@
-#!/bin/bash
+#!/bin/zsh
 export PATH="${HOME}/.local/bin:${PATH}"
-
-# kill capslock and replasce with esc
-setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
 
 # Load resources
 if [ -f ~/.Xresources ]; then
@@ -12,20 +9,16 @@ fi
 # automount disks
 udisks-glue
  
+# notification daemon
+dunst &
+
 # solarized background color
 xsetroot -solid '#002b36'
  
 # Fire up apps
 unclutter -idle 5 -root &
 nm-applet --sm-disable &
-gnome-sound-applet &
 blueman-applet &
-#pidgin &
-#skype &
-#dropbox start &
-#vidalia &
-
-laptop-powerd &
 
 # load rc files
 XSESSIONRCDIR=${XDG_CONFIG_HOME:-$HOME/.config}/xsession/rc.d
