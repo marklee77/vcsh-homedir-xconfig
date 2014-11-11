@@ -23,6 +23,8 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvtcd
 
+bindsym $mod+Shift+F exec firefox
+
 # kill focused window
 bindsym $mod+Shift+Q kill
 
