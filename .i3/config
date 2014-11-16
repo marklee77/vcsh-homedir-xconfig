@@ -2,6 +2,9 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# fix keyboard
+exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
+
 set $mod Mod4
 new_window 1pixel
 new_float normal 1
@@ -19,6 +22,8 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvtcd
+
+bindsym $mod+Shift+F exec firefox
 
 # kill focused window
 bindsym $mod+Shift+Q kill

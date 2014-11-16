@@ -14,12 +14,8 @@
 !.gmrunrc
 !.i3
 !.i3/*
-!.udisks-glue.conf
-!.xmobarrc
-!.xmonad
-!.xmonad/xmonad.hs
+!.i3status.conf
 !.Xresources
-!.xscreensaver
 !.xsession
 
 
