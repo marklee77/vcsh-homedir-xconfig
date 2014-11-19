@@ -5,6 +5,7 @@
 # fix keyboard
 exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
 exec --no-startup-id volti
+exec --no-startup-id system-config-printer-applet
 
 set $mod Mod4
 new_window 1pixel
