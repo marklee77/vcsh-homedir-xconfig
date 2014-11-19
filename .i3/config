@@ -4,7 +4,7 @@
 
 # fix keyboard
 exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
-exec --no-startup-id compton --config .config/compton/config
+exec --no-startup-id compton --config .config/compton/compton.conf
 exec --no-startup-id volti
 exec --no-startup-id system-config-printer-applet
 

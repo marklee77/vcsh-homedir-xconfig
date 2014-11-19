@@ -1,6 +1,7 @@
 *
 !.config
-!.config/autostart
+!.config/compton
+!.config/compton/*
 !.config/dunst
 !.config/dunst/*
 !.config/mr
