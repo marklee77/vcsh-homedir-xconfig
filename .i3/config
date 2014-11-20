@@ -124,28 +124,28 @@ bindsym $mod+Shift+E exit
 # resize window (you can also use the mouse for that)
 mode "resize" {
 
-bindsim h           resize shrink right 10 px or 10 ppt
-bindsim Left        resize shrink right 10 px or 10 ppt
-bindsim Shift+H     resize grow   left  10 px or 10 ppt
-bindsim Shift+Left  resize grow   left  10 px or 10 ppt
+bindsym $mod+h           resize shrink right 10 px or 10 ppt
+bindsym $mod+Left        resize shrink right 10 px or 10 ppt
+bindsym $mod+Shift+H     resize grow   left  10 px or 10 ppt
+bindsym $mod+Shift+Left  resize grow   left  10 px or 10 ppt
 
-bindsim j           resize shrink up    10 px or 10 ppt
-bindsim Down        resize shrink up    10 px or 10 ppt
-bindsim Shift+J     resize grow   down  10 px or 10 ppt
-bindsim Shift+Down  resize grow   down  10 px or 10 ppt
+bindsym $mod+j           resize shrink up    10 px or 10 ppt
+bindsym $mod+Down        resize shrink up    10 px or 10 ppt
+bindsym $mod+Shift+J     resize grow   down  10 px or 10 ppt
+bindsym $mod+Shift+Down  resize grow   down  10 px or 10 ppt
 
-bindsim k           resize shrink down  10 px or 10 ppt
-bindsim Up          resize shrink down  10 px or 10 ppt
-bindsim Shift+K     resize grow   up    10 px or 10 ppt
-bindsim Shift+Up    resize grow   up    10 px or 10 ppt
+bindsym $mod+k           resize shrink down  10 px or 10 ppt
+bindsym $mod+Up          resize shrink down  10 px or 10 ppt
+bindsym $mod+Shift+K     resize grow   up    10 px or 10 ppt
+bindsym $mod+Shift+Up    resize grow   up    10 px or 10 ppt
 
-bindsim l           resize shrink left  10 px or 10 ppt
-bindsim Right       resize shrink left  10 px or 10 ppt
-bindsim Shift+L     resize grow   right 10 px or 10 ppt
-bindsim Shift+Right resize grow   right 10 px or 10 ppt
+bindsym $mod+l           resize shrink left  10 px or 10 ppt
+bindsym $mod+Right       resize shrink left  10 px or 10 ppt
+bindsym $mod+Shift+L     resize grow   right 10 px or 10 ppt
+bindsym $mod+Shift+Right resize grow   right 10 px or 10 ppt
 
-bindsim Return mode "default"
-bindsim Escape mode "default"
+bindsym $mod+Return mode "default"
+bindsym $mod+Escape mode "default"
 
 }
 
