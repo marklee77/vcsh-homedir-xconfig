@@ -6,9 +6,6 @@ if [ -f ~/.Xresources ]; then
     xrdb -merge .Xresources
 fi
 
-# automount disks
-udisks-glue
- 
 # notification daemon
 dunst &
 
