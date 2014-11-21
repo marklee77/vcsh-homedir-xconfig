@@ -178,6 +178,7 @@ assign [class="Firefox"] 2
 for_window [class="Gimp"] floating enable
 for_window [class="PlayOnLinux"] floating enable
 for_window [class="Skype"] floating enable
+for_window [class="volti"] floating enable
 
 # Firefox
 for_window [title="Library"] floating enable
