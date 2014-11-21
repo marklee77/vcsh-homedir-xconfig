@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Load resources
 if [ -f ~/.Xresources ]; then
