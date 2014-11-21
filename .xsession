@@ -1,4 +1,9 @@
-#!/bin/zsh
+#!/usr/bin/zsh -l
+
+echo "xsession $SHELL" >> ~/.xsession-log
+if [ "${SHELL}" = "/bin/zsh" ] && [[ -o login ]]; then
+  echo "login shell" >> ~/.xsession-log
+fi
 
 # Load resources
 if [ -f ~/.Xresources ]; then
