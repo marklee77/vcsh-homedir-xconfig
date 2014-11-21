@@ -4,9 +4,24 @@
 
 # fix keyboard
 exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
+
+# solarized background color
+exec --no-startup-id xsetroot -solid '#002b36'
+
+# window fx
 #exec --no-startup-id compton --config .config/compton/compton.conf
-exec --no-startup-id volti
+
+# unclutter
+exec --no-startup-id unclutter -idle 5 -root
+
+# display notifications
+exec --no-startup-id dunst
+
+# applets
 exec --no-startup-id system-config-printer-applet
+exec --no-startup-id volti
+exec --no-startup-id nm-applet --sm-disable 
+exec --no-startup-id blueman-applet
 
 set $mod Mod4
 new_window 1pixel
