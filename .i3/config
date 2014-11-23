@@ -2,9 +2,6 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# start out muted and low volume
-exec --no-startup-id exec laptop-volume-set off 40%
-
 # fix keyboard
 exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
 
