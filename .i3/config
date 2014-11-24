@@ -203,6 +203,7 @@ for_window [title="Firefox Preferences"] floating enable
 # finds out, if available)
 bar {
   position top
+  font pango:DejaVu Sans Mono for Powerline, Icons 12
   status_command exec i3status
 }
 
