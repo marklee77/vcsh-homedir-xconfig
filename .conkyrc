@@ -8,6 +8,6 @@ TEXT
 ${if_up wlan0}W: (${wireless_link_qual_perc wlan0}% at ${wireless_essid wlan0}, \
 ${wireless_bitrate wlan0}) ${addrs wlan0} | ${endif}\
 ${if_up eth0}E: ${addrs eth0} (${upspeedf eth0} / ${downspeedf eth0}) | ${endif}\
-${if_existing /sys/class/power_supply/BAT0/present}BAT ${battery_percent BAT0}% ${battery_time BAT0}${else}AC${endif}\
-${time %Y-%M-%D %HH:%MM:%SS}
+${if_existing /sys/class/power_supply/BAT0/present}BAT ${battery_percent BAT0}% ${battery_time BAT0 %H:%M}${else}AC${endif} | \
+${time %Y-%m-%d %H:%M}
 
