@@ -7,6 +7,7 @@
 !.config/mr
 !.config/mr/config.d
 !.config/mr/config.d/xconfig
+!.conkyrc
 !.dmrc
 !.fonts.conf.d
 !.fonts.conf.d/*
