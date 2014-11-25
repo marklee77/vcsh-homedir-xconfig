@@ -23,8 +23,8 @@ if [ "$state" != "up" ]; then
 	exit 0
 fi
 
-ipaddrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (.+)\//'))
-ipaddrs6=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet6 (.+)\//'))
+ipaddrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
+ipaddrs6=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet6 (.+)\/.*scope global/'))
 
 short_text="$prefix ${ipaddrs[0]}"
 full_text="$prefix ${ipaddrs[@]} ${ipaddrs6[0]}"

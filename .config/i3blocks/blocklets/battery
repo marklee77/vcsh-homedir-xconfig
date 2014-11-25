@@ -14,9 +14,7 @@ design_capacity=$(perl -ane 'print "$F[2]\n" if (/^design capacity:/);' /proc/ac
 
 percentage="$((100*$remaining_capacity/$design_capacity))"
 for i in $(seq 0 $((${#thresholds[@]}-1))); do
-    echo "$i $percentage ${thresholds[i]}"
     if [ $percentage -le ${thresholds[i]} ]; then
-        echo "hi"
         prefix=${prefixes[i]}
         color=${colors[i]}
         break
@@ -34,7 +32,6 @@ else
         minutes_remaining_partial="0$minutes_remaining_partial"
     fi
     time_remaining="$hours_remaining:$minutes_remaining_partial"
-
 
     #if [ ${BATTERY_STATUS} = "ok" ] &&
        #[ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_WARN_MINUTES} ]; 
@@ -64,12 +61,12 @@ else
 
 fi
 
-short_msg="$prefix$percentage%"
-long_msg="$short_msg"
-[ -n $time_remaining ] && long_msg="$long_msg $time_remaining"
+short_text="$prefix $percentage%"
+full_text=$short_text
+[ -n $time_remaining ] && full_text="$full_text $time_remaining"
 
-echo $long_msg
-echo $short_msg
+echo $full_text
+echo $short_text
 [ -n "$color" ] && echo $color
 
 exit 0
