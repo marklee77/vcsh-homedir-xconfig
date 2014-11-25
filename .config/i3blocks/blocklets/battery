@@ -17,7 +17,7 @@ present_rate=$(perl -ane 'print "$F[2]\n" if (/^present rate:/);' /proc/acpi/bat
 remaining_capacity=$(perl -ane 'print "$F[2]\n" if (/^remaining capacity:/);' /proc/acpi/battery/BAT0/state)
 design_capacity=$(perl -ane 'print "$F[2]\n" if (/^design capacity:/);' /proc/acpi/battery/BAT0/info)
 
-percentage="$((100*$remaining_capacity/$design_capacity))%"
+percentage="$((100*$remaining_capacity/$design_capacity))"
 
 if [ $percentage -lt $low_threshold ]; then
   prefix=$empty_prefix
@@ -41,7 +41,7 @@ else
     if [ $minutes_remaining_partial -lt 10 ]; then
         minutes_remaining_parital="0$minutes_remaining_partial"
     fi
-    time_remaining="$hours_remaining:$minutes_remaining"
+    time_remaining="$hours_remaining:$minutes_remaining_partial"
 
 
     #if [ ${BATTERY_STATUS} = "ok" ] &&
@@ -75,3 +75,9 @@ fi
 short_msg="$prefix$percentage%"
 long_msg="$short_msg"
 [ -n $time_remaining ] && long_msg="$long_msg $time_remaining"
+
+echo $long_msg
+echo $short_msg
+[ -n "$color" ] && echo $color
+
+exit 0
