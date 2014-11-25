@@ -39,7 +39,7 @@ else
     hours_remaining=$(($minutes_remaining/60))
     minutes_remaining_partial=$(($minutes_remaining%60))
     if [ $minutes_remaining_partial -lt 10 ]; then
-        minutes_remaining_parital="0$minutes_remaining_partial"
+        minutes_remaining_partial="0$minutes_remaining_partial"
     fi
     time_remaining="$hours_remaining:$minutes_remaining_partial"
 

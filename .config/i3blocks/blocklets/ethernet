@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
 # with changes Copyright (C) 2014 Mark Stillwell <mark@stillwell.me>
 
@@ -15,22 +15,24 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-IFACE="$1"
-[ -z "${IFACE}" ] && IFACE=eth0
+prefix="" 
+iface="${1:-eth0}"
 
-state="$(cat /sys/class/net/$IFACE/operstate)"
+state="$(cat /sys/class/net/$iface/operstate)"
 
 if [ "$state" != "up" ]; then
 	exit 0
 fi
 
-ipaddrs=($(ip addr show ${IFACE} | perl -ne 'print "$1\n" if /inet (.+)\//'))
-ipaddrs6=($(ip addr show ${IFACE} | perl -ne 'print "$1\n" if /inet6 (.+)\//'))
+ipaddrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (.+)\//'))
+ipaddrs6=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet6 (.+)\//'))
 
-short_msg=" ${ipaddrs[0]}"
-long_msg=" ${ipaddrs[@]} ${ipaddrs6[0]}"
-speed="$(cat /sys/class/net/$IFACE/speed 2> /dev/null)"
-[ -n "$speed" ] && long_msg="$long_msg ($speed Mb/s)"
+short_text="$prefix ${ipaddrs[0]}"
+full_text="$prefix ${ipaddrs[@]} ${ipaddrs6[0]}"
+speed="$(cat /sys/class/net/$iface/speed 2> /dev/null)"
+[ -n "$speed" ] && full_text="$full_text ($speed Mb/s)"
 
-echo $long_msg
-echo $short_msg
+echo $full_text
+echo $short_text
+
+exit 0
