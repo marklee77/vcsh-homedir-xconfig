@@ -1,30 +1,38 @@
 #!/bin/bash
-loud_prefix=" "
-loud_threshold=50
-quiet_prefix=" "
-muted_prefix=" "
+thresholds=(50 100)
+prefixes=("" "")
+muted_prefix=""
 muted_color="#FF0000"
 
-CARD=${1:-1}
-CONTROL=${2:-Master}
+card=${1:-0}
+control=${2:-Master}
 
-info=($(amixer -c $CARD get $CONTROL | perl -ne 'print "$1 $2\n" if /^\s*Mono:.*\[(.+)%\].*\[.*\].*\[(.+)\].*/'))
+info=($(amixer -c $card get $control | perl -ne 'print "$1 $2\n" if /^\s*Mono:.*\[(.+)%\].*\[.*\].*\[(.+)\].*/'))
 
 [ -z "${info}" ] && exit 0
+
 volume=${info[0]}
 status=${info[1]}
 
 if [ $status = "off" ]; then
   prefix=$muted_prefix
   color=$muted_color
-elif [ $volume -lt $loud_threshold ]; then
-  prefix=$quiet_prefix
 else
-  prefix=$loud_prefix
+    for i in $(seq ${#thresholds[@]}); do
+        echo "$i $volume ${thresholds[i]}"
+        if [ $volume -le ${thresholds[i]} ]; then
+            prefix=${prefixes[i]}
+            color=${colors[i]}
+            break
+        fi
+    done
 fi
 
-echo $prefix$volume%
-echo $prefix$volume%
+short_text="$prefix $volume%"
+full_text=$short_text
+
+echo $full_text
+echo $short_text
 [ -n $color ] && echo $color
 
 exit 0
