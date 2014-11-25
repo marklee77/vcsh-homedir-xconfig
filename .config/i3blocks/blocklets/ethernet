@@ -19,7 +19,6 @@ prefix=""
 iface="${1:-eth0}"
 
 state="$(cat /sys/class/net/$iface/operstate)"
-
 if [ "$state" != "up" ]; then
 	exit 0
 fi
@@ -29,6 +28,7 @@ ipaddrs6=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet6 (.+)\//'))
 
 short_text="$prefix ${ipaddrs[0]}"
 full_text="$prefix ${ipaddrs[@]} ${ipaddrs6[0]}"
+
 speed="$(cat /sys/class/net/$iface/speed 2> /dev/null)"
 [ -n "$speed" ] && full_text="$full_text ($speed Mb/s)"
 
