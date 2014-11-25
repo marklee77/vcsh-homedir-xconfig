@@ -1,0 +1,47 @@
+#!/bin/bash
+BATTERY_WARN_MINUTES=10
+BATTERY_HIBERNATE_MINUTES=5
+
+BATTERY_PRESENT_RATE=$(perl -ane 'print "$F[2]\n" if (/^present rate:/);' /proc/acpi/battery/BAT0/state)
+
+if on_ac_power || [ ${BATTERY_PRESENT_RATE} -le 0 ]; then
+
+    BATTERY_STATUS=charging
+
+else
+
+    BATTERY_REMAINING_CAPACITY=$(perl -ane 'print "$F[2]\n" if (/^remaining capacity:/);' /proc/acpi/battery/BAT0/state)
+    BATTERY_MINUTES_REMAINING=$((${BATTERY_REMAINING_CAPACITY}*60/${BATTERY_PRESENT_RATE}))
+
+    if [ ${BATTERY_STATUS} = "ok" ] &&
+       [ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_WARN_MINUTES} ]; 
+    then
+
+        BATTERY_STATUS=low
+        #notify-send --urgency=critical \
+        #    "Low Battery Warning!" \
+        #    "The remaining battery charge is critically low. Please connect to AC power."
+
+    elif [ ${BATTERY_STATUS} = "low" ] &&
+         [ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_HIBERNATE_MINUTES} ]; then
+
+        BATTERY_STATUS=critical
+
+        #notify-send --urgency=critical \
+        #    "Hibernating!" \
+        #    "If the computer is not plugged in within the next 30 seconds, hibernation procedures will commence."
+
+        #sleep 30
+
+        #if ! on_ac_power; then
+        #    laptop-hibernate
+        #fi
+
+    fi
+fi
+
+echo "BATTERY_STATUS: ${BATTERY_STATUS}"
+echo "BATTERY_PRESENT_RATE: ${BATTERY_PRESENT_RATE}"
+echo "BATTERY_REMAINING_CAPACITY: ${BATTERY_REMAINING_CAPACITY}"
+echo "BATTERY_MINUTES_REMAINING: ${BATTERY_MINUTES_REMAINING}"
+

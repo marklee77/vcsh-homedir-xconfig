@@ -1,0 +1,30 @@
+#!/bin/bash
+loud_prefix=" "
+loud_threshold=50
+quiet_prefix=" "
+muted_prefix=" "
+muted_color="#FF0000"
+
+CARD=${1:-1}
+CONTROL=${2:-Master}
+
+info=($(amixer -c $CARD get $CONTROL | perl -ne 'print "$1 $2\n" if /^\s*Mono:.*\[(.+)%\].*\[.*\].*\[(.+)\].*/'))
+
+[ -z "${info}" ] && exit 0
+volume=${info[0]}
+status=${info[1]}
+
+if [ $status = "off" ]; then
+  prefix=$muted_prefix
+  color=$muted_color
+elif [ $volume -lt $loud_threshold ]; then
+  prefix=$quiet_prefix
+else
+  prefix=$loud_prefix
+fi
+
+echo $prefix$volume%
+echo $prefix$volume%
+[ -n $color ] && echo $color
+
+exit 0
