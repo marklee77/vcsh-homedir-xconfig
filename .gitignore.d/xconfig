@@ -17,6 +17,8 @@
 !.i3
 !.i3/*
 !.i3status.conf
+!.terminfo
+!.terminfo/*
 !.Xresources
 !.xsession
 
