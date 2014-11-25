@@ -15,9 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-thresholds=(100 50 25 10)
+thresholds=(10 25 50 100)
 prefixes=('' '' '' '')
-colors=('#00FF00' '#FFFFFF' '#FFFF00' '#FF0000')
+colors=('#FF0000' '#FFFF00' '#FFFFFF' '#00FF00')
 
 iface="${1:-wlan0}"
 
@@ -32,24 +32,22 @@ ipaddrs6=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet6 (.+)\//'))
 short_text="${ipaddrs[0]}"
 full_text="${ipaddrs[@]} ${ipaddrs6[0]}"
 
-#stats=($(iwconfig $iface | perl -0ne 'print "$1 $2 ", eval "int(100*$3)" if /ESSID:"(.+?)".*Bit Rate=(.+?)\s+T.*Link Quality=(.+?)\s*S.*/ms;'))
-stats=($(iwconfig $iface | perl -0ne 'print "$1 $2 ", eval "int(100*$3)" if /ESSID:"(.+?)".*Bit Rate=(.+?\/s).*Link Quality=([^\s]+)/ms;'))
-echo ${stats[@]}
-exit 0
+oldIFS=$IFS
+IFS=,
+stats=($(iwconfig $iface | perl -0ne 'print "$1,$2,", eval "int(100*$3)" if /ESSID:"(.+?)".*Bit Rate=(.+?\/s).*Link Quality=([^\s]+)/ms;'))
+IFS=$oldIFS
 if [ -n "$stats" ]; then
     essid="${stats[0]}"
-    quality="${stats[3]}"
-    speed="${stats[1]} ${stats[2]}"
+    quality="${stats[2]}"
+    speed="${stats[1]}"
     full_text="$full_text ($quality% at $essid, $speed)" 
-    if [ "$quality" -lt "$degraded_threshold" ]; then
-        prefix=$bad_prefix
-        color=$bad_color
-    elif [ "$quality" -lt "$good_threshold" ]; then
-        prefix=$degraded_prefix
-        color=$degraded_color
-    else
-        prefix=$good_prefix
-    fi
+    for i in $(seq ${#thresholds}); do
+        if [ $quality -le ${thresholds[i]} ]; then
+            prefix=${prefixes[i]}
+            color=${colors[i]}
+            break
+        fi
+    done
 fi
 
 echo $prefix$full_text
