@@ -1,11 +1,11 @@
 # Global properties
 separator_block_width=15
 
-[focused window]
-command=xdotool getactivewindow getwindowname
-align=left
-interval=3
-color=#A6D1FA
+#[focused window]
+#command=xdotool getactivewindow getwindowname
+#align=left
+#interval=3
+#color=#A6D1FA
 
 [wifi]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
