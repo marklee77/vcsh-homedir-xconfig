@@ -1,6 +1,11 @@
 # Global properties
 separator_block_width=15
 
+[wifi]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
+color=#00FF00
+interval=5
+
 [ethernet]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/ethernet eth0
 color=#00FF00
