@@ -7,6 +7,11 @@ separator_block_width=15
 #interval=3
 #color=#A6D1FA
 
+[external ip]
+command=nm-online && echo " $(curl ifconfig.me/ip)"
+color=#00FF00
+interval=600
+
 [wifi]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
 interval=5
