@@ -30,7 +30,8 @@ ipaddrs6=($(ip addr show $IFACE | perl -ne 'print "$1\n" if /inet6 (.+)\//'))
 short_msg=" ${ipaddrs[0]}"
 long_msg=" ${ipaddrs[@]} ${ipaddrs6[0]}"
 
-
+stats=($(iwconfig wlan0 | perl -0ne 'print "$1\n$2\n", eval "int(100*$3)", "%\n" if /ESSID:"(.+?)".*Bit Rate=(.+?)\s+Tx-Power=.*?Link Quality=(.+?)\s*Signal level=.*?/ms;'))
+[ -n "$stats" ] && long_msg="$long_msg (${stats[2]} at ${stats[0]}, ${stats[1]})"
 
 echo $long_msg
 echo $short_msg
