@@ -1,26 +1,27 @@
 #!/bin/bash
 charging_prefix=" "
 full_prefix=" "
+full_threshold="90"
 high_prefix=" "
+high_threshold="50"
 low_prefix=" "
+low_threshold="20"
+low_color="#FFFF00"
 empty_prefix=" "
-BATTERY_WARN_MINUTES=10
-BATTERY_HIBERNATE_MINUTES=5
+empty_color="#FF0000"
+warn_minutes=10
+hibernate_minutes=5
 
-BATTERY_PRESENT_RATE=$(perl -ane 'print "$F[2]\n" if (/^present rate:/);' /proc/acpi/battery/BAT0/state)
-BATTERY_REMAINING_CAPACITY=$(perl -ane 'print "$F[2]\n" if (/^remaining capacity:/);' /proc/acpi/battery/BAT0/state)
+present_rate=$(perl -ane 'print "$F[2]\n" if (/^present rate:/);' /proc/acpi/battery/BAT0/state)
+remaining_capacity=$(perl -ane 'print "$F[2]\n" if (/^remaining capacity:/);' /proc/acpi/battery/BAT0/state)
+design_capacity=$(perl -ane 'print "$F[2]\n" if (/^design capacity:/);' /proc/acpi/battery/BAT0/info)
 
-BATTERY_DESIGN_CAPACITY=$(perl -ane 'print "$F[2]\n" if (/^design capacity:/);' /proc/acpi/battery/BAT0/info)
+percentage="$((100*$remaining_capacity/$design_capacity))%"
 
-BATTERY_PERCENTAGE="$((100*${BATTERY_REMAINING_CAPACITY}/${BATTERY_DESIGN_CAPACITY}))%"
-
-if on_ac_power || [ ${BATTERY_PRESENT_RATE} -le 0 ]; then
-
-    BATTERY_STATUS=charging
-
+if on_ac_power || [ $present_rate -le 0 ]; then
+    prefix=$charging_prefix
 else
-
-    BATTERY_MINUTES_REMAINING=$((${BATTERY_REMAINING_CAPACITY}*60/${BATTERY_PRESENT_RATE}))
+    minutes_remaining=$(($remaining_capacity*60/$present_rate))
 
     if [ ${BATTERY_STATUS} = "ok" ] &&
        [ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_WARN_MINUTES} ]; 
