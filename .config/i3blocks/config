@@ -11,15 +11,15 @@ color=#00FF00
 interval=5
 
 [battery]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/battery
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/battery BAT0
 align=right
-min_width=M 000% 0:00
+min_width= 000% 0:00
 interval=5
 
 [volume]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/volume 1 Master
 align=right
-min_width=M 000%
+min_width=  000%
 interval=once
 signal=1
 
