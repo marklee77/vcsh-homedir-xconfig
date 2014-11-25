@@ -6,6 +6,7 @@
 !.config/dunst/*
 !.config/i3blocks
 !.config/i3blocks/*
+!.config/i3blocks/blocklets/*
 !.config/mr
 !.config/mr/config.d
 !.config/mr/config.d/xconfig

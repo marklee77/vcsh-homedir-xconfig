@@ -2,7 +2,7 @@
 separator_block_width=15
 
 [ethernet]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/network eth0
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/ethernet eth0
 color=#00FF00
 interval=10
 
