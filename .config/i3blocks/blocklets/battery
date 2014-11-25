@@ -1,8 +1,9 @@
 #!/bin/bash
 charging_prefix=" "
 full_prefix=" "
-full_threshold="90"
+full_threshold="95"
 high_prefix=" "
+high_color="#FFFFFF"
 high_threshold="50"
 low_prefix=" "
 low_threshold="20"
@@ -18,43 +19,59 @@ design_capacity=$(perl -ane 'print "$F[2]\n" if (/^design capacity:/);' /proc/ac
 
 percentage="$((100*$remaining_capacity/$design_capacity))%"
 
+if [ $percentage -lt $low_threshold ]; then
+  prefix=$empty_prefix
+  color=$empty_color
+elif [ $percentage -lt $high_threshold ]; then
+  prefix=$low_prefix
+  color=$low_color
+elif [ $percentage -lt $full_threshold ]; then
+  prefix=$high_prefix
+  color=$high_color
+else
+  prefix=$full_prefix
+fi
+
 if on_ac_power || [ $present_rate -le 0 ]; then
     prefix=$charging_prefix
 else
     minutes_remaining=$(($remaining_capacity*60/$present_rate))
-
-    if [ ${BATTERY_STATUS} = "ok" ] &&
-       [ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_WARN_MINUTES} ]; 
-    then
-
-        BATTERY_STATUS=low
-        #notify-send --urgency=critical \
-        #    "Low Battery Warning!" \
-        #    "The remaining battery charge is critically low. Please connect to AC power."
-
-    elif [ ${BATTERY_STATUS} = "low" ] &&
-         [ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_HIBERNATE_MINUTES} ]; then
-
-        BATTERY_STATUS=critical
-
-        #notify-send --urgency=critical \
-        #    "Hibernating!" \
-        #    "If the computer is not plugged in within the next 30 seconds, hibernation procedures will commence."
-
-        #sleep 30
-
-        #if ! on_ac_power; then
-        #    laptop-hibernate
-        #fi
-
+    hours_remaining=$(($minutes_remaining/60))
+    minutes_remaining_partial=$(($minutes_remaining%60))
+    if [ $minutes_remaining_partial -lt 10 ]; then
+        minutes_remaining_parital="0$minutes_remaining_partial"
     fi
+    time_remaining="$hours_remaining:$minutes_remaining"
+
+
+    #if [ ${BATTERY_STATUS} = "ok" ] &&
+       #[ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_WARN_MINUTES} ]; 
+    #then
+
+        #BATTERY_STATUS=low
+        ##notify-send --urgency=critical \
+        ##    "Low Battery Warning!" \
+        ##    "The remaining battery charge is critically low. Please connect to AC power."
+
+    #elif [ ${BATTERY_STATUS} = "low" ] &&
+         #[ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_HIBERNATE_MINUTES} ]; then
+
+        #BATTERY_STATUS=critical
+
+        ##notify-send --urgency=critical \
+        ##    "Hibernating!" \
+        ##    "If the computer is not plugged in within the next 30 seconds, hibernation procedures will commence."
+
+        ##sleep 30
+
+        ##if ! on_ac_power; then
+        ##    laptop-hibernate
+        ##fi
+
+    #fi
+
 fi
 
-echo "BATTERY_STATUS: ${BATTERY_STATUS}"
-echo "BATTERY_PRESENT_RATE: ${BATTERY_PRESENT_RATE}"
-echo "BATTERY_REMAINING_CAPACITY: ${BATTERY_REMAINING_CAPACITY}"
-echo "BATTERY_MINUTES_REMAINING: ${BATTERY_MINUTES_REMAINING}"
-echo "BATTERY_REMAINING_CAPACITY: ${BATTERY_REMAINING_CAPACITY}"
-echo "BATTERY_DESIGN_CAPACITY: ${BATTERY_DESIGN_CAPACITY}"
-echo "BATTERY_PERCENTAGE: ${BATTERY_PERCENTAGE}"
-
+short_msg="$prefix$percentage%"
+long_msg="$short_msg"
+[ -n $time_remaining ] && long_msg="$long_msg $time_remaining"
