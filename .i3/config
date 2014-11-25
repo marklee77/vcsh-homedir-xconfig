@@ -38,7 +38,8 @@ font pango:DejaVu Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtcd
+#bindsym $mod+Return exec urxvtcd
+bindsym $mod+Return exec st
 
 bindsym $mod+Shift+F exec firefox
 
