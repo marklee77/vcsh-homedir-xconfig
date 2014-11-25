@@ -18,8 +18,7 @@ if [ $status = "off" ]; then
   prefix=$muted_prefix
   color=$muted_color
 else
-    for i in $(seq ${#thresholds[@]}); do
-        echo "$i $volume ${thresholds[i]}"
+    for i in $(seq 0 $((${#thresholds[@]}-1))); do
         if [ $volume -le ${thresholds[i]} ]; then
             prefix=${prefixes[i]}
             color=${colors[i]}

@@ -1,15 +1,10 @@
 #!/bin/bash
+thresholds=(15 40 95 100)
+prefixes=(" " " " " " " ")
+colors=("#FF0000" "#FFFF00" "#FFFFFF" "#00FF00")
 charging_prefix=" "
-full_prefix=" "
-full_threshold="95"
-high_prefix=" "
-high_color="#FFFFFF"
-high_threshold="50"
-low_prefix=" "
-low_threshold="20"
-low_color="#FFFF00"
-empty_prefix=" "
-empty_color="#FF0000"
+charging_color="#00FF00"
+
 warn_minutes=10
 hibernate_minutes=5
 
@@ -18,22 +13,19 @@ remaining_capacity=$(perl -ane 'print "$F[2]\n" if (/^remaining capacity:/);' /p
 design_capacity=$(perl -ane 'print "$F[2]\n" if (/^design capacity:/);' /proc/acpi/battery/BAT0/info)
 
 percentage="$((100*$remaining_capacity/$design_capacity))"
-
-if [ $percentage -lt $low_threshold ]; then
-  prefix=$empty_prefix
-  color=$empty_color
-elif [ $percentage -lt $high_threshold ]; then
-  prefix=$low_prefix
-  color=$low_color
-elif [ $percentage -lt $full_threshold ]; then
-  prefix=$high_prefix
-  color=$high_color
-else
-  prefix=$full_prefix
-fi
+for i in $(seq 0 $((${#thresholds[@]}-1))); do
+    echo "$i $percentage ${thresholds[i]}"
+    if [ $percentage -le ${thresholds[i]} ]; then
+        echo "hi"
+        prefix=${prefixes[i]}
+        color=${colors[i]}
+        break
+    fi
+done
 
 if on_ac_power || [ $present_rate -le 0 ]; then
     prefix=$charging_prefix
+    color=$charging_color
 else
     minutes_remaining=$(($remaining_capacity*60/$present_rate))
     hours_remaining=$(($minutes_remaining/60))

@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-thresholds=(10 25 50 100)
+thresholds=(15 30 50 100)
 prefixes=('' '' '' '')
 colors=('#FF0000' '#FFFF00' '#FFFFFF' '#00FF00')
 
@@ -35,7 +35,7 @@ if [ -n "$stats" ]; then
     quality="${stats[2]}"
     speed="${stats[1]}"
     info="$quality% at $essid, $speed" 
-    for i in $(seq ${#thresholds[@]}); do
+    for i in $(seq 0 $((${#thresholds[@]}-1))); do
         if [ $quality -le ${thresholds[i]} ]; then
             prefix=${prefixes[i]}
             color=${colors[i]}
