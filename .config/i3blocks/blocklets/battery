@@ -9,6 +9,9 @@ warn_minutes=10
 hibernate_minutes=5
 
 battery=${1:-BAT0}
+run_dir=${HOME}/.local/var/run/blocklets-battery
+mkdir -p $run_dir
+previous_status=$(cat $run_dir/status 2>/dev/null || echo "ok")
 
 present_rate=$(perl -ane 'print "$F[2]\n" if (/^present rate:/);' /proc/acpi/battery/${battery}/state)
 remaining_capacity=$(perl -ane 'print "$F[2]\n" if (/^remaining capacity:/);' /proc/acpi/battery/${battery}/state)
@@ -26,6 +29,7 @@ done
 if on_ac_power || [ $present_rate -le 0 ]; then
     prefix=$charging_prefix
     color=$charging_color
+    status="ok"
 else
     minutes_remaining=$(($remaining_capacity*60/$present_rate))
     hours_remaining=$(($minutes_remaining/60))
@@ -35,32 +39,25 @@ else
     fi
     time_remaining="$hours_remaining:$minutes_remaining_partial"
 
-    #if [ ${BATTERY_STATUS} = "ok" ] &&
-       #[ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_WARN_MINUTES} ]; 
-    #then
-
-        #BATTERY_STATUS=low
-        ##notify-send --urgency=critical \
-        ##    "Low Battery Warning!" \
-        ##    "The remaining battery charge is critically low. Please connect to AC power."
-
-    #elif [ ${BATTERY_STATUS} = "low" ] &&
-         #[ ${BATTERY_MINUTES_REMAINING} -lt ${BATTERY_HIBERNATE_MINUTES} ]; then
-
-        #BATTERY_STATUS=critical
-
-        ##notify-send --urgency=critical \
-        ##    "Hibernating!" \
-        ##    "If the computer is not plugged in within the next 30 seconds, hibernation procedures will commence."
-
-        ##sleep 30
+    if [ "$status" = "ok" ] && [ $minutes_remaining -lt $warn_minutes ]; then
+        status="low"
+        notify-send --urgency=critical \
+            "Low Battery Warning!" \
+            "The battery charge is critically low. Please connect to AC power."
+    elif [ "${status}" = "low" ] && 
+         [ $minutes_remaining -lt $hibernate_minutes ]; then
+        status=critical
+        notify-send --urgency=critical \
+            "Hibernating!" \
+            "If the computer is not plugged in within the next 30 seconds, \
+             hibernation procedures will commence."
+        sleep 30
 
         ##if ! on_ac_power; then
         ##    laptop-hibernate
         ##fi
 
-    #fi
-
+    fi
 fi
 
 short_text="$prefix $percentage%"
