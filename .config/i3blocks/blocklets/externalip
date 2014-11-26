@@ -1,6 +1,6 @@
 #!/bin/bash
 prefix="" 
-nm-online || exit 0
+nm-online -x || exit 0
 externalip=$(curl -s ifconfig.me/ip)
 defaultdev=$(ip route | perl -ne 'print "$1\n" if /^default\s.*\sdev\s([^\s]+)/')
 defaultdevaddrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
