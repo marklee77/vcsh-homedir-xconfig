@@ -16,7 +16,7 @@ exec --no-startup-id exec dunst
 
 # applets
 exec --no-startup-id exec system-config-printer-applet
-#exec --no-startup-id exec nm-applet --sm-disable 
+exec --no-startup-id exec nm-applet 
 #exec --no-startup-id exec blueman-applet
 
 # unclutter
