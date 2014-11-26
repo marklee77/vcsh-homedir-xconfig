@@ -8,7 +8,7 @@ separator_block_width=15
 #color=#A6D1FA
 
 [external ip]
-command=nm-online && echo " $(curl ifconfig.me/ip)"
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
 color=#00FF00
 interval=600
 
@@ -29,7 +29,6 @@ interval=5
 [battery]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/battery BAT0
 align=right
-min_width= 000% 0:00
 interval=5
 
 [volume]
