@@ -12,6 +12,11 @@ command=nm-online && echo " $(curl ifconfig.me/ip)"
 color=#00FF00
 interval=600
 
+#[tor ip]
+#command=nm-online && echo " $(curl --socks5 localhost:9050 ifconfig.me/ip)"
+#color=#00FF00
+#interval=600
+
 [wifi]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
 interval=5
