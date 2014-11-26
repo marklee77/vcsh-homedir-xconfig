@@ -5,8 +5,8 @@ colors=("#FF0000" "#FFFF00" "#FFFFFF" "#00FF00")
 charging_prefix=""
 charging_color="#00FF00"
 
-warn_minutes=10
-hibernate_minutes=5
+warn_minutes=12
+hibernate_minutes=7
 
 battery=${1:-BAT0}
 run_dir=${HOME}/.local/var/run/blocklets-battery
@@ -52,9 +52,7 @@ else
                 "Hibernating!" \
                 "If the computer is not plugged in within the next 30 seconds, hibernation procedures will commence."
             sleep 30
-            #if ! on_ac_power; then
-            #    laptop-hibernate
-            #fi
+            on_ac_power || laptop-hibernate
         fi
     fi
 fi
