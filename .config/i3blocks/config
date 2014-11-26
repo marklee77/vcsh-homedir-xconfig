@@ -31,17 +31,17 @@ command=${XDG_CONFIG_HOME}/i3blocks/blocklets/battery BAT0
 align=right
 interval=5
 
-[brightness]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/brightness
-align=right
-min_width= 000%
-interval=once
-signal=1
-
 [volume]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/volume 1 Master
 align=right
-min_width= 000%
+min_width= 100%
+interval=once
+signal=1
+
+[brightness]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/brightness
+align=right
+min_width= 100%
 interval=once
 signal=2
 

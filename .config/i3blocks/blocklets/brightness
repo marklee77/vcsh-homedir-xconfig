@@ -1,0 +1,14 @@
+#!/bin/bash
+prefix=""
+
+brightness=$(xbacklight)
+
+[ -z "${brightness}" ] && exit 0
+
+short_text="$prefix ${brightness%%.*}%"
+full_text=$short_text
+
+echo $full_text
+echo $short_text
+
+exit 0
