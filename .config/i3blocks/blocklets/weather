@@ -1,0 +1,19 @@
+#!/bin/bash
+#prefix="" 
+nm-online || exit 0
+externalip=$(curl -s ifconfig.me/ip)
+coords=($(geoiplookup -f /usr/share/GeoIP/GeoLiteCity.dat 155.198.198.251 | perl -F, -ane 'print "$F[-3] $F[-4]"'))
+lat=${coords[1]}
+lon=${coords[0]}
+report=$(curl -s "http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}")
+
+echo $report
+exit 1
+
+full_text="$prefix $externalip"
+
+if [ -n "$externalip" ] && [ "$externalip" != "$defaultip" ]; then
+    echo $full_text
+fi
+
+exit 0
