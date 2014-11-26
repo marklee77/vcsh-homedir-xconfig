@@ -11,7 +11,10 @@ hibernate_minutes=5
 battery=${1:-BAT0}
 run_dir=${HOME}/.local/var/run/blocklets-battery
 mkdir -p $run_dir
-previous_status=$(cat $run_dir/status 2>/dev/null || echo "ok")
+previous_status=$(cat $run_dir/status 2>/dev/null)
+if [ $? -ne 0 ] || [ -n $status ]; then
+    previous_status="ok"
+fi
 
 present_rate=$(perl -ane 'print "$F[2]\n" if (/^present rate:/);' /proc/acpi/battery/${battery}/state)
 remaining_capacity=$(perl -ane 'print "$F[2]\n" if (/^remaining capacity:/);' /proc/acpi/battery/${battery}/state)
@@ -59,6 +62,8 @@ else
 
     fi
 fi
+
+echo $status > $run_dir/status
 
 short_text="$prefix $percentage%"
 full_text=$short_text
