@@ -2,7 +2,7 @@
 thresholds=(15 40 95 100)
 prefixes=("" "" "" "")
 colors=("#FF0000" "#FFFF00" "#FFFFFF" "#00FF00")
-charging_prefix=" "
+charging_prefix=""
 charging_color="#00FF00"
 
 warn_minutes=10

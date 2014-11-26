@@ -32,8 +32,8 @@ stats=($(iwconfig $iface | perl -0ne 'print "$1,$2,", eval "int(100*$3)" if /ESS
 IFS=$oldIFS
 if [ -n "$stats" ]; then
     essid="${stats[0]}"
-    quality="${stats[2]}"
     speed="${stats[1]}"
+    quality="${stats[2]}"
     info="$quality% at $essid, $speed" 
     for i in $(seq 0 $((${#thresholds[@]}-1))); do
         if [ $quality -le ${thresholds[i]} ]; then
