@@ -11,12 +11,10 @@ hibernate_minutes=5
 battery=${1:-BAT0}
 run_dir=${HOME}/.local/var/run/blocklets-battery
 mkdir -p $run_dir
-previous_status=$(cat $run_dir/status 2>/dev/null)
-[ -z $previous_status ] && previous_status="ok"
 
-present_rate=$(perl -ane 'print "$F[2]\n" if (/^present rate:/);' /proc/acpi/battery/${battery}/state)
-remaining_capacity=$(perl -ane 'print "$F[2]\n" if (/^remaining capacity:/);' /proc/acpi/battery/${battery}/state)
-design_capacity=$(perl -ane 'print "$F[2]\n" if (/^design capacity:/);' /proc/acpi/battery/${battery}/info)
+present_rate=$(perl -ane 'print $F[2] if /^present rate:/' /proc/acpi/battery/${battery}/state)
+remaining_capacity=$(perl -ane 'print $F[2] if /^remaining capacity:/' /proc/acpi/battery/${battery}/state)
+design_capacity=$(perl -ane 'print $F[2] if (/^design capacity:/);' /proc/acpi/battery/${battery}/info)
 
 percentage="$((100*$remaining_capacity/$design_capacity))"
 for i in $(seq 0 $((${#thresholds[@]}-1))); do
@@ -27,7 +25,9 @@ for i in $(seq 0 $((${#thresholds[@]}-1))); do
     fi
 done
 
-status="$previous_status"
+status="ok"
+previous_status=$(cat $run_dir/status 2>/dev/null)
+[ -z $previous_status ] && previous_status="ok"
 if on_ac_power || [ $present_rate -le 0 ]; then
     prefix=$charging_prefix
     color=$charging_color
@@ -40,22 +40,22 @@ else
     fi
     time_remaining="$hours_remaining:$minutes_remaining_partial"
 
-    if [ "$previous_status" = "ok" ] && [ $minutes_remaining -lt $warn_minutes ]; then
+    if [ $minutes_remaining -lt $warn_minutes ]; then
         status="low"
-        notify-send --urgency=critical \
-            "Low Battery Warning!" \
-            "The battery charge is critically low. Please connect to AC power."
-    elif [ "$previous_status" = "low" ] && 
-         [ $minutes_remaining -lt $hibernate_minutes ]; then
-        status="critical"
-        notify-send --urgency=critical \
-            "Hibernating!" \
-            "If the computer is not plugged in within the next 30 seconds, \
-             hibernation procedures will commence."
-        sleep 30
-        #if ! on_ac_power; then
-        #    laptop-hibernate
-        #fi
+        if [ "$previous_status" = "ok" ]; then
+            notify-send --urgency=critical \
+                "Low Battery Warning!" \
+                "The battery charge is critically low. Please connect to AC power."
+        elif [ "$previous_status" = "low" ] && 
+             [ $minutes_remaining -lt $hibernate_minutes ]; then
+            notify-send --urgency=critical \
+                "Hibernating!" \
+                "If the computer is not plugged in within the next 30 seconds, hibernation procedures will commence."
+            sleep 30
+            #if ! on_ac_power; then
+            #    laptop-hibernate
+            #fi
+        fi
     fi
 fi
 
