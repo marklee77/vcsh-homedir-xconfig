@@ -1,9 +1,9 @@
 # Global properties
-separator_block_width=15
+separator_block_width=12
 
 #[focused window]
-#command=xdotool search . behave %@ focus getwindowname null 2>/dev/null || xdotool getactivewindow getwindowname
-#interval=restart
+#command=xdotool getactivewindow getwindowname
+#interval=1
 #align=left
 #color=#A6D1FA
 
