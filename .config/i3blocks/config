@@ -2,9 +2,9 @@
 separator_block_width=15
 
 #[focused window]
-#command=xdotool getactivewindow getwindowname
+#command=xdotool search . behave %@ focus getwindowname null 2>/dev/null || xdotool getactivewindow getwindowname
+#interval=restart
 #align=left
-#interval=3
 #color=#A6D1FA
 
 [external ip]
