@@ -1,0 +1,42 @@
+#!/bin/bash
+# Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
+# with changes Copyright (C) 2014 Mark Stillwell <mark@stillwell.me>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+prefix=''
+color='#00FF00'
+
+iface="${1:-bnep0}"
+
+# state check does not work for bluetooth
+#state="$(cat /sys/class/net/$iface/operstate)"
+#if [ "$state" != "up" ]; then
+#	exit 0
+#fi
+
+ipaddrs=($(ip addr show $iface 2>/dev/null | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
+ipaddrs6=($(ip addr show $iface 2>/dev/null | perl -ne 'print "$1\n" if /inet6 (.+)\/.*scope global/'))
+if [ ${#ipaddrs} = 0 ] && [ ${#ipaddrs6} = 0 ]; then
+    exit 0
+fi
+
+full_text="$prefix ${ipaddrs[@]} ${ipaddrs6[0]}"
+short_text="$prefix ${ipaddrs[0]}"
+
+echo $full_text
+echo $short_text
+[ -n "$color" ] && echo $color
+
+exit 0
