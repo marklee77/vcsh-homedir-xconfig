@@ -30,7 +30,7 @@ previous_status=$(cat $run_dir/status 2>/dev/null)
 [ -z $previous_status ] && previous_status="ok"
 if on_ac_power || [ $present_rate -le 0 ]; then
     prefix=$charging_prefix
-    color=$charging_color
+    #color=$charging_color
 else
     minutes_remaining=$(($remaining_capacity*60/$present_rate))
     hours_remaining=$(($minutes_remaining/60))
