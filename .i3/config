@@ -196,6 +196,7 @@ assign [class="Firefox"] 2
 for_window [class="Gimp"] floating enable
 for_window [class="PlayOnLinux"] floating enable
 for_window [class="Skype"] floating enable
+for_window [title="Cura.*"] floating enable
 for_window [class="fontforge"] floating enable
 
 # Firefox
