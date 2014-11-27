@@ -53,3 +53,7 @@ interval=30
 [lid]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/lid
 interval=5
+
+[mrsync]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mrsync
+interval=600
