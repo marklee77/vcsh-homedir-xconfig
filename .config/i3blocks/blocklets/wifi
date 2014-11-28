@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 thresholds=(15 30 50 100)
-prefixes=('' '' '' '')
+prefixes=("\uf25c" "\uf25c" "\uf25c" "\uf25c")
 colors=("#dc322f" "#b58900" "#839496" "#859900")
 
 iface="${1:-wlan0}"
@@ -50,8 +50,8 @@ ipaddrs6=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet6 (.+)\/.*scope
 full_text="$prefix ${ipaddrs[@]} ${ipaddrs6[0]} ($info)"
 short_text="$prefix ${ipaddrs[0]}"
 
-echo $full_text
-echo $short_text
+echo -e $full_text
+echo -e $short_text
 [ -n "$color" ] && echo $color
 
 exit 0

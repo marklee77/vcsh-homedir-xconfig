@@ -57,7 +57,7 @@ fi
 
 echo $status > $run_dir/status
 
-short_text="$prefix$percentage%"
+short_text="$prefix $percentage%"
 full_text=$short_text
 [ -n $time_remaining ] && full_text="$full_text $time_remaining"
 

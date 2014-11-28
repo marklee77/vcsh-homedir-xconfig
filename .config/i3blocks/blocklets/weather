@@ -13,7 +13,7 @@ exit 1
 full_text="$prefix $externalip"
 
 if [ -n "$externalip" ] && [ "$externalip" != "$defaultip" ]; then
-    echo $full_text
+    echo -e $full_text
 fi
 
 exit 0
