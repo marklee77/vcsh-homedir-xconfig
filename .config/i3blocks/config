@@ -39,6 +39,7 @@ signal=1
 
 [brightness]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/brightness
+color=#839496
 align=right
 min_width= 100%
 interval=once

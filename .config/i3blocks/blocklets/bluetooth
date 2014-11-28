@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 prefix=''
-color='#00FF00'
+color='#859900'
 
 iface="${1:-bnep0}"
 
