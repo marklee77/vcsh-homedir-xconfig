@@ -9,7 +9,7 @@ separator_block_width=12
 
 [external ip]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
-color=#00FF00
+color=#85990
 interval=600
 
 [wifi]
@@ -22,7 +22,7 @@ interval=5
 
 [ethernet]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/ethernet eth0
-color=#00FF00
+color=#85990
 interval=5
 
 [battery]
@@ -46,6 +46,7 @@ signal=2
 
 [time]
 command=date '+%Y-%m-%d %H:%M'
+color=#839496
 align=right
 min_width=0000-00-00 00:00
 interval=30

@@ -1,8 +1,7 @@
 #!/bin/bash
 thresholds=(15 40 95 100)
 prefixes=("\uf212" "\uf215" "\uf214" "\uf213")
-colors=("#FF0000" "#FFFF00" "#FFFFFF" "#00FF00")
-colors=("#dc322f" "#b58900" "#FFFFFF" "#00FF00")
+colors=("#dc322f" "#b58900" "#839496" "#859900")
 charging_prefix="\uf211"
 charging_color="#00FF00"
 
