@@ -1,7 +1,7 @@
 #!/bin/bash
 thresholds=(15 40 95 100)
 prefixes=("\uf212" "\uf215" "\uf214" "\uf213")
-prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
+#prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
 colors=("#dc322f" "#b58900" "#839496" "#859900")
 charging_prefix="\uf211"
 #charging_prefix="\uf111"
@@ -61,7 +61,7 @@ fi
 
 echo $status > $run_dir/status
 
-short_text="$prefix$percentage%"
+short_text="$prefix $percentage%"
 full_text=$short_text
 [ -n $time_remaining ] && full_text="$full_text $time_remaining"
 
