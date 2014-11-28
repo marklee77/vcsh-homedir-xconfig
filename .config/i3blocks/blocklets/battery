@@ -1,8 +1,9 @@
 #!/bin/bash
 thresholds=(15 40 95 100)
-prefixes=("" "" "" "")
+prefixes=("\uf212" "\uf215" "\uf214" "\uf213")
 colors=("#FF0000" "#FFFF00" "#FFFFFF" "#00FF00")
-charging_prefix=""
+colors=("#dc322f" "#b58900" "#FFFFFF" "#00FF00")
+charging_prefix="\uf211"
 charging_color="#00FF00"
 
 warn_minutes=12
@@ -63,8 +64,8 @@ short_text="$prefix $percentage%"
 full_text=$short_text
 [ -n $time_remaining ] && full_text="$full_text $time_remaining"
 
-echo $full_text
-echo $short_text
+echo -e $full_text
+echo -e $short_text
 [ -n "$color" ] && echo $color
 
 [ $status = "critical" ] && exit 33
