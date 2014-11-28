@@ -1,5 +1,5 @@
 #!/bin/bash
-prefix="" 
+prefix="\uf2df" 
 nm-online -x || exit 0
 externalip=$(curl -s ifconfig.me/ip)
 defaultdev=$(ip route | perl -ne 'print "$1\n" if /^default\s.*\sdev\s([^\s]+)/')

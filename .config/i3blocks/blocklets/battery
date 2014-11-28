@@ -1,11 +1,8 @@
 #!/bin/bash
 thresholds=(15 40 95 100)
-prefixes=("\uf212" "\uf215" "\uf214" "\uf213")
 prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
 colors=("#dc322f" "#b58900" "#839496" "#859900")
-charging_prefix="\uf211"
-#charging_prefix="\uf111"
-charging_color="#00FF00"
+charging_prefix="\uf111"
 
 warn_minutes=12
 hibernate_minutes=7
@@ -32,7 +29,6 @@ previous_status=$(cat $run_dir/status 2>/dev/null)
 [ -z $previous_status ] && previous_status="ok"
 if on_ac_power || [ $present_rate -le 0 ]; then
     prefix=$charging_prefix
-    #color=$charging_color
 else
     minutes_remaining=$(($remaining_capacity*60/$present_rate))
     hours_remaining=$(($minutes_remaining/60))
@@ -62,7 +58,6 @@ fi
 echo $status > $run_dir/status
 
 short_text="$prefix$percentage%"
-short_text="${prefix}30%"
 full_text=$short_text
 [ -n $time_remaining ] && full_text="$full_text $time_remaining"
 

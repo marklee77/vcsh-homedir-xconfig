@@ -1,5 +1,5 @@
 #!/bin/bash
-prefix=""
+prefix="\uf2dc"
 
 brightness=$(xbacklight)
 
@@ -8,7 +8,7 @@ brightness=$(xbacklight)
 short_text="$prefix ${brightness%%.*}%"
 full_text=$short_text
 
-echo $full_text
-echo $short_text
+echo -e $full_text
+echo -e $short_text
 
 exit 0

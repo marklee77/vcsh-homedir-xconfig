@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-prefix="" 
+prefix="\uf341" 
 iface="${1:-eth0}"
 
 state="$(cat /sys/class/net/$iface/operstate)"
@@ -32,7 +32,7 @@ full_text="$prefix ${ipaddrs[@]} ${ipaddrs6[0]}"
 speed="$(cat /sys/class/net/$iface/speed 2> /dev/null)"
 [ -n "$speed" ] && full_text="$full_text ($speed Mb/s)"
 
-echo $full_text
-echo $short_text
+echo -e $full_text
+echo -e $short_text
 
 exit 0
