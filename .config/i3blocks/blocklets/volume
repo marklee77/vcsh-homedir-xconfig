@@ -2,7 +2,8 @@
 thresholds=(50 100)
 prefixes=("" "")
 muted_prefix=""
-muted_color="#FF0000"
+color="#839496"
+muted_color="#dc322f"
 
 card=${1:-0}
 control=${2:-Master}
@@ -21,7 +22,6 @@ else
     for i in $(seq 0 $((${#thresholds[@]}-1))); do
         if [ $volume -le ${thresholds[i]} ]; then
             prefix=${prefixes[i]}
-            color=${colors[i]}
             break
         fi
     done

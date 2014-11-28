@@ -17,7 +17,7 @@
 
 thresholds=(15 30 50 100)
 prefixes=('' '' '' '')
-colors=('#FF0000' '#FFFF00' '#FFFFFF' '#00FF00')
+colors=("#dc322f" "#b58900" "#839496" "#859900")
 
 iface="${1:-wlan0}"
 
