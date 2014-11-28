@@ -35,7 +35,7 @@ focus_follows_mouse no
 
 # font for window titles. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:DejaVu Sans Mono 12
+font pango:DejaVu Sans Mono 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -206,8 +206,6 @@ for_window [title="Firefox Preferences"] floating enable
 
 bar {
   position top
-  #font pango:DejaVu Sans Mono, Icons 11
-  font pango:DejaVu Sans Mono 11
   status_command exec i3blocks
 }
 
