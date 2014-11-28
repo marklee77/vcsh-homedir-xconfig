@@ -4,6 +4,9 @@
 !.config/compton/*
 !.config/dunst
 !.config/dunst/*
+!.config/fontconfig
+!.config/fontconfig/*
+!.config/fontconfig/conf.d/*
 !.config/i3blocks
 !.config/i3blocks/*
 !.config/i3blocks/blocklets/*
