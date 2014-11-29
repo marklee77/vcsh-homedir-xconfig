@@ -2,7 +2,7 @@
 separator_block_width=12
 
 [test]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
+command=python ${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
 interval=30
 
 #[external ip]
