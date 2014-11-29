@@ -1,7 +1,7 @@
 #!/bin/bash
 prefix="\uf2df" 
 nm-online -x || exit 0
-externalip=$(curl -s ifconfig.me/ip)
+externalip=$(curl -s ifconfig.me/ip | perl -ne 'print if /^(?:\d{1,3}\.){3}\d{1,3}$/')
 defaultdev=$(ip route | perl -ne 'print "$1\n" if /^default\s.*\sdev\s([^\s]+)/')
 defaultdevaddrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
 defaultip=${defaultdevaddrs[0]}
