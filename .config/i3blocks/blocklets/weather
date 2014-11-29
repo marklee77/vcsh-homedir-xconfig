@@ -9,9 +9,6 @@ import simplejson as json
 if not nm.ActiveConnections:
     exit(0)
 
-print "test"
-exit(0)
-
 # http://openweathermap.org/weather-conditions
 # 01d, clear skies, sun, moon
 # 02d, few clouds,  sun, moon poking out from behind cloud
@@ -47,6 +44,9 @@ c.setopt(c.URL, 'api.openweathermap.org/data/2.5/weather?lat={latitude}'
                 '&lon={longitude}&units=metric'.format(**geoinfo))
 c.setopt(c.WRITEDATA, buf)
 c.perform()
+
+print "test"
+exit(0)
 
 weatherinfo = json.loads(buf.getvalue())
 
