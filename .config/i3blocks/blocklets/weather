@@ -48,10 +48,10 @@ c.perform()
 
 weatherinfo = json.loads(buf.getvalue())
 
-short_text = u' '.join(set(w['icon'] for w in weatherinfo['weather'])) \
-             + u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
+#short_text = u' '.join(set(w['icon'] for w in weatherinfo['weather'])) \
+#             + u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
 
-print "test"
-exit(0)
+short_text = u' '.join(set(w['icon'] for w in weatherinfo['weather'])) 
+
 print short_text
 exit(0)
