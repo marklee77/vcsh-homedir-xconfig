@@ -1,7 +1,7 @@
 # Global properties
 separator_block_width=12
 
-[weather]
+[test]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
 interval=30
 
