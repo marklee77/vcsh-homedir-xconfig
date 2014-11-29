@@ -51,4 +51,3 @@ short_text = u' '.join([w['icon'] for w in weatherinfo['weather']]) \
              + u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
 
 print short_text
-exit(0)
