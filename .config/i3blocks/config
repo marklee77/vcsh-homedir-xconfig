@@ -8,9 +8,9 @@ separator_block_width=12
 #color=#A6D1FA
 
 #[weather]
-#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
-#color=#85990
-#interval=900
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
+color=#85990
+interval=900
 
 [external ip]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
