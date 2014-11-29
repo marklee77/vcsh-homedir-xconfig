@@ -1,25 +1,20 @@
 #!/usr/bin/env python
+# Copyright 2014 Mark Stillwell <mark@stillwell.me>
+# development platform is Ubuntu 14.04 (Trusty Tahir)
+# requries python, python-networkmanager, python-pycurl, python-simplejson
+# also requires a font with icons at the appropriate values
 
 from NetworkManager import NetworkManager as nm
 
 import pycurl
-from io import BytesIO
 import simplejson as json
+from io import BytesIO
 
 if not nm.ActiveConnections:
     exit(0)
 
-# http://openweathermap.org/weather-conditions
-# 01d, clear skies, sun, moon
-# 02d, few clouds,  sun, moon poking out from behind cloud
-# 03d, scattered clouds
-# 04d, broken clouds
-# 09d, shower rain
-# 10d, rain
-# 11d, thunderstorm
-# 13d, snow
-# 50d, mist (wavy lines)
-
+# keys and suggested values at http://openweathermap.org/weather-conditions
+# unicode values are based on icomoon.io icon font including Meteocons
 icons = {'01d': u'\ue601', '01n': u'\ue602',
          '02d': u'\ue607', '02n': u'\ue608',
          '03d': u'\ue60d', '03n': u'\ue60d',
@@ -60,3 +55,4 @@ short_text = (u' '.join(set(icons[w['icon']] for w in weatherinfo['weather']))
 
 print short_text
 exit(0)
+
