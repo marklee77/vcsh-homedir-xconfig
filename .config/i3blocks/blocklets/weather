@@ -3,6 +3,8 @@
 # development platform is Ubuntu 14.04 (Trusty Tahir)
 # requries python, python-networkmanager, python-pycurl, python-simplejson
 # also requires a font with icons at the appropriate values
+# The author uses one generated at icomoon.io by including all of the glyphs
+# from the  Meteocons, Ionicons, and Font Awesome icon libraries.
 
 from NetworkManager import NetworkManager as nm
 
@@ -52,7 +54,5 @@ short_text = (u' '.join(set(icons[w['icon']] for w in weatherinfo['weather']))
               + u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
               ).encode('utf-8')
 
-
 print short_text
 exit(0)
-
