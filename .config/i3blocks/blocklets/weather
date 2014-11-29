@@ -20,15 +20,15 @@ if not nm.ActiveConnections:
 # 13d, snow
 # 50d, mist (wavy lines)
 
-icons = { '01d' : u'\ue601', '01n' : u'\ue602', 
-          '02d' : u'\ue607', '02n' : u'\ue608',
-          '03d' : u'\ue60d', '03n' : u'\ue60d',
-          '04d' : u'\ue618', '04n' : u'\ue618',
-          '09d' : u'\ue611', '09n' : u'\ue611',
-          '10d' : u'\ue622', '10n' : u'\ue622',
-          '11d' : u'\ue60e', '11n' : u'\ue60e',
-          '13d' : u'\ue616', '13n' : u'\ue616',
-          '50d' : u'\ue60c', '50n' : u'\ue60c' }
+icons = {'01d': u'\ue601', '01n': u'\ue602',
+         '02d': u'\ue607', '02n': u'\ue608',
+         '03d': u'\ue60d', '03n': u'\ue60d',
+         '04d': u'\ue618', '04n': u'\ue618',
+         '09d': u'\ue611', '09n': u'\ue611',
+         '10d': u'\ue622', '10n': u'\ue622',
+         '11d': u'\ue60e', '11n': u'\ue60e',
+         '13d': u'\ue616', '13n': u'\ue616',
+         '50d': u'\ue60c', '50n': u'\ue60c'}
 
 buf = BytesIO()
 c = pycurl.Curl()
