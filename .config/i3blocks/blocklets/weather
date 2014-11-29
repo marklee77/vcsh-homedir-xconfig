@@ -9,6 +9,9 @@ import simplejson as json
 if not nm.ActiveConnections:
     exit(0)
 
+print "test"
+exit(0)
+
 # http://openweathermap.org/weather-conditions
 # 01d, clear skies, sun, moon
 # 02d, few clouds,  sun, moon poking out from behind cloud
