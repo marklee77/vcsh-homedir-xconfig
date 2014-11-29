@@ -34,19 +34,24 @@ buf = BytesIO()
 c = pycurl.Curl()
 c.setopt(c.URL, "freegeoip.net/json/")
 c.setopt(c.WRITEDATA, buf)
-c.perform()
 
-geoinfo = json.loads(buf.getvalue())
+try:
+    c.perform()
+    geoinfo = json.loads(buf.getvalue())
+except Exception:
+    exit(0)
 
 buf = BytesIO()
 c = pycurl.Curl()
 c.setopt(c.URL, 'api.openweathermap.org/data/2.5/weather?lat={latitude}'
                 '&lon={longitude}&units=metric'.format(**geoinfo))
 c.setopt(c.WRITEDATA, buf)
-c.perform()
 
-
-weatherinfo = json.loads(buf.getvalue())
+try:
+    c.perform()
+    weatherinfo = json.loads(buf.getvalue())
+except Exception:
+    exit(0)
 
 short_text = (u' '.join(set(icons[w['icon']] for w in weatherinfo['weather']))
               + u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
