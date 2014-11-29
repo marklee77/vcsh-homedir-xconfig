@@ -48,10 +48,10 @@ c.perform()
 
 weatherinfo = json.loads(buf.getvalue())
 
-#short_text = u' '.join(set(w['icon'] for w in weatherinfo['weather'])) \
-#             + u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
+short_text = (u' '.join(set(w['icon'] for w in weatherinfo['weather'])) +
+              u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
+              ).encode('iso-8859-1')
 
-short_text = (u'{:d}\u00b0'.format(int(weatherinfo['main']['temp']))).encode('iso-8859-1')
 
 print short_text
 exit(0)
