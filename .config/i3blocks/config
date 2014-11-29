@@ -2,7 +2,7 @@
 separator_block_width=12
 
 [weather]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather.py
 color=#85990
 interval=900
 
