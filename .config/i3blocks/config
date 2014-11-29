@@ -1,15 +1,14 @@
 # Global properties
 separator_block_width=12
 
-[weather]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
-color=#85990
-interval=30
-
 [external ip]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
 color=#85990
 interval=600
+
+[weather]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
+interval=30
 
 [wifi]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
