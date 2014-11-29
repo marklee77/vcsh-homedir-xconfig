@@ -6,6 +6,9 @@ import pycurl
 from io import BytesIO
 import simplejson as json
 
+print "test"
+exit(0)
+
 if not nm.ActiveConnections:
     exit(0)
 
