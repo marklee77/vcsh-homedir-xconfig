@@ -29,8 +29,6 @@ set $mod Mod4
 new_window 1pixel
 new_float normal 1
 hide_edge_borders both
-#for_window [class="^.*"] border pixel 1
-
 focus_follows_mouse no
 
 # font for window titles. ISO 10646 = Unicode
@@ -40,10 +38,9 @@ font pango:DejaVu Sans Mono for Powerline, IcoMoon 11
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec urxvtcd
-bindsym $mod+Return exec st
+bindsym $mod+Return exec exec st
 
-bindsym $mod+Shift+F exec firefox
+bindsym $mod+Shift+F exec exec firefox
 
 # kill focused window
 bindsym $mod+Shift+Q kill
