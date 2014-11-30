@@ -9,12 +9,12 @@ interval=15
 [weather]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
 color=#839496
-interval=900
+interval=300
 
 [external ip]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
 color=#839496
-interval=600
+interval=300
 
 [wifi]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
@@ -45,7 +45,7 @@ signal=1
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/brightness
 color=#839496
 align=right
-min_width= 100%
+min_width= 100%
 interval=once
 signal=2
 
