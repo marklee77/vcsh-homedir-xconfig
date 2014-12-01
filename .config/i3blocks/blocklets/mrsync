@@ -20,4 +20,4 @@ fi
 mr -d ${HOME} -q commit -m autocommit
 
 # use sshpass to get around gpg problems with encrypted repos...
-nm-online && sshpass mr -d ${HOME} -q autopush
+nm-online -x && sshpass mr -d ${HOME} -q autopush
