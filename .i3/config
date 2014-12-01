@@ -25,6 +25,9 @@ exec --no-startup-id exec dunst
 # unclutter
 exec --no-startup-id exec unclutter -idle 5 -root
 
+# automount
+exec --no-startup-id exec gvfs-automount
+
 set $mod Mod4
 new_window 1pixel
 new_float normal 1
