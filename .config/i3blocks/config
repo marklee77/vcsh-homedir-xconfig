@@ -63,3 +63,8 @@ interval=5
 [mrsync]
 command=${HOME}/.local/bin/mrsync
 interval=600
+
+[mailsync]
+command=${HOME}/.local/bin/mailsync
+interval=600
+
