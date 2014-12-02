@@ -1,0 +1,10 @@
+#!/bin/bash
+LOCKDIR="${HOME}/.local/var/lock/mailsync"
+PIDFILE="${LOCKDIR}/PID"
+PID=$(cat ${PIDFILE} 2>/dev/null)
+PROCNAME=$(basename $(ps aux | perl -ane "print \"\$F[11]\\n\" if (\$F[1] == ${OTHERPID});" 2>/dev/null) 2>/dev/null)
+if [ -z "${PID}" ] || [ "${PROCNAME}" != "${SCRIPTNAME}" ]; then
+    exit 0
+fi
+
+echo -e "\uf021\uf132"
