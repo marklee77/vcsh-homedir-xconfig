@@ -66,10 +66,10 @@ command=${XDG_CONFIG_HOME}/i3blocks/blocklets/lid
 interval=5
 
 [mrsync]
-command=${HOME}/.local/bin/mrsync
+command=${HOME}/.local/bin/mrsync 2>&1 >/dev/null
 interval=600
 
 [mailsync]
-command=${HOME}/.local/bin/mailsync
+command=${HOME}/.local/bin/mailsync 2>&1 >/dev/null
 interval=600
 
