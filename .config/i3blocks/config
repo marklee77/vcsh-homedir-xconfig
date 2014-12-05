@@ -69,7 +69,7 @@ interval=5
 command=${HOME}/.local/bin/mrsync 2>&1 >/dev/null
 interval=600
 
-[mailsync]
-command=${HOME}/.local/bin/mailsync 2>&1 >/dev/null
-interval=600
+#[mailsync]
+#command=${HOME}/.local/bin/mailsync 2>&1 >/dev/null
+#interval=600
 
