@@ -1,8 +1,8 @@
 #!/bin/bash
 lid_state=$(perl -ane 'print $F[1]' /proc/acpi/button/lid/LID/state)
 if [ "$lid_state" = "closed" ]; then
-    laptop-lock
-    on_ac_power || laptop-smartsleep
+    laptop-lock >/dev/null &
+    on_ac_power || laptop-smartsleep >/dev/null
 fi
 
 #echo $lid_state
