@@ -4,8 +4,8 @@ prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
 colors=("#dc322f" "#b58900" "#839496" "#859900")
 charging_prefix="\uf111"
 
-warn_minutes=12
-hibernate_minutes=7
+warn_percent=6
+hibernate_percent=4
 
 battery=${1:-BAT0}
 run_dir=${HOME}/.local/var/run/blocklets-battery
@@ -38,14 +38,14 @@ else
     fi
     time_remaining="$hours_remaining:$minutes_remaining_partial"
 
-    if [ $minutes_remaining -lt $warn_minutes ]; then
+    if [ $percentage -lt $warn_percent ]; then
         status="low"
         if [ "$previous_status" = "ok" ]; then
             notify-send --urgency=critical \
                 "Low Battery Warning!" \
                 "The battery charge is critically low. Please connect to AC power."
         elif [ "$previous_status" = "low" ] && 
-             [ $minutes_remaining -lt $hibernate_minutes ]; then
+             [ $percentage -lt $hibernate_percent ]; then
             notify-send --urgency=critical \
                 "Hibernating!" \
                 "If the computer is not plugged in within the next 30 seconds, hibernation procedures will commence."
