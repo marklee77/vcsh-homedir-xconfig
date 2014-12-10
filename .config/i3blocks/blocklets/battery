@@ -4,7 +4,7 @@ prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
 colors=("#dc322f" "#b58900" "#839496" "#859900")
 charging_prefix="\uf111"
 
-warn_percent=10
+warn_percent=7
 hibernate_percent=5
 
 battery=${1:-BAT0}
