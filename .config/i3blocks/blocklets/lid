@@ -2,14 +2,13 @@
 lid_state=$(perl -ane 'print $F[1]' /proc/acpi/button/lid/LID/state)
 if [ "$lid_state" = "closed" ]; then
     if xrandr --current | grep " connected" | grep -v eDP1 -q; then
-        xrandr --output eDP1 --off
+        # FIXME: need to turn back on when opened....
+        #xrandr --output eDP1 --off
+        echo
     else
         laptop-lock >/dev/null &
+        on_ac_power || laptop-smartsleep >/dev/null
     fi
-    on_ac_power || laptop-smartsleep >/dev/null
-elif xrandr --current 
 fi
-
-#echo $lid_state
 
 exit 0
