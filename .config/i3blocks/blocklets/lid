@@ -1,8 +1,13 @@
 #!/bin/bash
 lid_state=$(perl -ane 'print $F[1]' /proc/acpi/button/lid/LID/state)
 if [ "$lid_state" = "closed" ]; then
-    laptop-lock >/dev/null &
+    if xrandr --current | grep " connected" | grep -v eDP1 -q; then
+        xrandr --output eDP1 --off
+    else
+        laptop-lock >/dev/null &
+    fi
     on_ac_power || laptop-smartsleep >/dev/null
+elif xrandr --current 
 fi
 
 #echo $lid_state
