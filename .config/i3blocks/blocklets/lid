@@ -4,7 +4,6 @@ scriptname=$(basename $0)
 run_dir=${HOME}/.local/var/run/blocklets-$scriptname
 mkdir -p $run_dir
 screen_status=$(cat $run_dir/screen-status 2>/dev/null)
-echo $screen_status
 
 lid_state=$(perl -ane 'print $F[1]' /proc/acpi/button/lid/LID/state)
 if [ "$lid_state" = "closed" ]; then
