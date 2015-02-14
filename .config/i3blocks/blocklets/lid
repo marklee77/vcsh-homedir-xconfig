@@ -4,20 +4,19 @@ scriptname=$(basename $0)
 run_dir=${HOME}/.local/var/run/blocklets-$scriptname
 mkdir -p $run_dir
 screen_status=$(cat $run_dir/screen-status 2>/dev/null)
-
 lid_state=$(perl -ane 'print $F[1]' /proc/acpi/button/lid/LID/state)
+
 if [ "$lid_state" = "closed" ]; then
-    if [ "$screen_status" != "off" ]; then
-        xrandr --output $laptop_screen --off
-        echo "off" > $run_dir/screen-status
-    fi
     if ! xrandr --current | grep " connected" | grep -v ^$laptop_screen -q; then
         laptop-lock >/dev/null &
         on_ac_power || laptop-smartsleep >/dev/null
+    elif [ "$screen_status" != "off" ]; then
+        xrandr --output $laptop_screen --off
+        echo "off" > $run_dir/screen-status
     fi
 elif [ "$screen_status" = "off" ]; then
     xrandr --output $laptop_screen --auto
-    echo "on" > $run_dir/screen-status
+    echo "auto" > $run_dir/screen-status
 fi
 
 exit 0
