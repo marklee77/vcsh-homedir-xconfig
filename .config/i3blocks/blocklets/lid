@@ -16,7 +16,7 @@ if [ "$lid_state" = "closed" ]; then
         on_ac_power || laptop-smartsleep >/dev/null
     fi
 elif [ "$screen_status" = "off" ]; then
-    xrandr --output $laptop_screen --on
+    xrandr --output $laptop_screen --auto
     echo "on" > $run_dir/screen-status
 fi
 
