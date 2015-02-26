@@ -1,43 +1,43 @@
 # Global properties
 separator_block_width=12
 
-[mailsync-status]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mailsync-status
-color=#839496
-interval=15
+#[mailsync-status]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mailsync-status
+#color=#839496
+#interval=15
 
-[mrsync-status]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mrsync-status
-color=#839496
-interval=15
+#[mrsync-status]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mrsync-status
+#color=#839496
+#interval=15
 
-[weather]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
-color=#839496
-interval=300
+#[weather]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
+#color=#839496
+#interval=300
 
-[external ip]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
-color=#839496
-interval=300
+#[external ip]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
+#color=#839496
+#interval=300
 
-[wifi]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
-interval=5
+#[wifi]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
+#interval=5
 
-[bluetooth]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/bluetooth bnep0
-interval=5
+#[bluetooth]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/bluetooth bnep0
+#interval=5
 
-[ethernet]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/ethernet eth0
-color=#85990
-interval=5
+#[ethernet]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/ethernet eth0
+#color=#85990
+#interval=5
 
-[battery]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/battery BAT0
-align=right
-interval=5
+#[battery]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/battery BAT0
+#align=right
+#interval=5
 
 [volume]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/volume 1 Master
@@ -61,9 +61,9 @@ align=right
 min_width=0000-00-00 00:00
 interval=30
 
-[lid]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/lid
-interval=5
+#[lid]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/lid
+#interval=5
 
 [mrsync]
 command=${HOME}/.local/bin/mrsync 2>&1 >/dev/null
