@@ -11,7 +11,7 @@ if [ "$lid_state" = "closed" ]; then
         xrandr --output $laptop_screen --off
     fi
 elif [ -z "$screen_status" ]; then
-    xrandr --output $laptop_screen --auto
+    xrandr --output $laptop_screen --auto --primary
 fi
 
 exit 0
