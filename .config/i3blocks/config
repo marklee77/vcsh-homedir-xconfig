@@ -66,7 +66,7 @@ command=${XDG_CONFIG_HOME}/i3blocks/blocklets/lid
 interval=5
 
 [screen]
-command=${HOME}/.local/bin/laptop-screen-toggle-layout
+command=${HOME}/.local/bin/laptop-screen-toggle-layout --nocycle
 interval=5
 
 [mrsync]
