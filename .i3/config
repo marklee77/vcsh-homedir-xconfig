@@ -174,7 +174,7 @@ bindsym $mod+r mode "resize"
 bindsym XF86Sleep exec --no-startup-id laptop-smartsleep
 
 # monitor (need to test)
-bindsym XF86Display exec --no-startup-id laptop-screen-toggle
+bindsym XF86Display exec --no-startup-id laptop-screen-toggle-layout
 
 # audio
 bindsym XF86AudioRaiseVolume exec --no-startup-id laptop-volume-set 2%+ && pkill -RTMIN+1 i3blocks 
