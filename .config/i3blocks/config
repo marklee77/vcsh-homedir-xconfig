@@ -1,25 +1,25 @@
 # Global properties
 separator_block_width=12
 
-#[mailsync-status]
-#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mailsync-status
-#color=#839496
-#interval=15
+[mailsync-status]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mailsync-status
+color=#839496
+interval=15
 
-#[mrsync-status]
-#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mrsync-status
-#color=#839496
-#interval=15
+[mrsync-status]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mrsync-status
+color=#839496
+interval=15
 
-#[weather]
-#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
-#color=#839496
-#interval=300
+[weather]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
+color=#839496
+interval=300
 
-#[external ip]
-#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
-#color=#839496
-#interval=300
+[external ip]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
+color=#839496
+interval=300
 
 #[wifi]
 #command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
