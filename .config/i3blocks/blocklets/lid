@@ -7,8 +7,8 @@ if [ "$lid_state" = "closed" ]; then
     if ! xrandr --current | grep " connected" | grep -v ^$laptop_screen -q; then
         laptop-lock >/dev/null &
         on_ac_power || laptop-smartsleep >/dev/null
-    elif [ -n "$screen_status" ]; then
-        xrandr --output $laptop_screen --off
+    #elif [ -n "$screen_status" ]; then
+    #    xrandr --output $laptop_screen --off
     fi
 elif [ -z "$screen_status" ]; then
     xrandr --output $laptop_screen --auto --primary
