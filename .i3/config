@@ -11,6 +11,10 @@ exec --no-startup-id exec xautolock -time 10 -locker laptop-lock -killtime 20 -k
 # solarized background color
 exec --no-startup-id xsetroot -solid '#002b36'
 
+# flux
+# FIXME: script to auto-get geoip coords, update, cache, etc...
+exec --no-startup-id xflux -l 52 -g 0
+
 # window fx
 #exec --no-startup-id compton --config .config/compton/compton.conf
 
