@@ -124,8 +124,8 @@ bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+exclam move workspace 1
-bindsym $mod+Shift+quotedbl move workspace 2
-bindsym $mod+Shift+sterling move workspace 3
+bindsym $mod+Shift+2 move workspace 2
+bindsym $mod+sterling move workspace 3
 bindsym $mod+Shift+dollar move workspace 4
 bindsym $mod+Shift+percent move workspace 5
 bindsym $mod+Shift+asciicircum move workspace 6
