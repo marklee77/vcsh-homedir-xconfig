@@ -11,9 +11,13 @@ battery=${1:-BAT0}
 run_dir=${HOME}/.local/var/run/blocklets-battery
 mkdir -p $run_dir
 
-present_rate=$(perl -ane 'print $F[2] if /^present rate:/' /proc/acpi/battery/${battery}/state)
-remaining_capacity=$(perl -ane 'print $F[2] if /^remaining capacity:/' /proc/acpi/battery/${battery}/state)
-design_capacity=$(perl -ane 'print $F[2] if (/^design capacity:/);' /proc/acpi/battery/${battery}/info)
+#present_rate=$(perl -ane 'print $F[2] if /^present rate:/' /proc/acpi/battery/${battery}/state)
+#remaining_capacity=$(perl -ane 'print $F[2] if /^remaining capacity:/' /proc/acpi/battery/${battery}/state)
+#design_capacity=$(perl -ane 'print $F[2] if (/^design capacity:/);' /proc/acpi/battery/${battery}/info)
+
+present_rate=$(cat /sys/class/power_supply/${battery}/current_now)
+remaining_capacity=$(cat /sys/class/power_supply/${battery}/charge_now)
+design_capacity=$(cat /sys/class/power_supply/${battery}/charge_full)
 
 percentage="$((100*$remaining_capacity/$design_capacity))"
 for i in $(seq 0 $((${#thresholds[@]}-1))); do
