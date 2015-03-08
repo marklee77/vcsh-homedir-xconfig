@@ -211,6 +211,7 @@ for_window [title="Firefox Preferences"] floating enable
 bar {
   position top
   status_command i3blocks
+  tray_output primary
 }
 
 client.focused #859900 #859900 #fdf6e3 #859900
