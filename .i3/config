@@ -207,7 +207,7 @@ for_window [class="fontforge"] floating enable
 for_window [title="Library"] floating enable
 for_window [title="Firefox Preferences"] floating enable
 
-
+# i3bar
 bar {
   position top
   status_command i3blocks
