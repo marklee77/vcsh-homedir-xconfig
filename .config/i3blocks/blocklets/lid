@@ -7,9 +7,9 @@ exec 2>&1
 
 if [ "$lid_state" = "closed" ] && ! xrandr --current | grep " connected" | grep -v ^$laptop_screen -q; then
     if on_ac_power; then
-        laptop-lock
+        exec laptop-lock
     else
-        laptop-smartsleep
+        exec laptop-smartsleep
     fi
 fi
 
