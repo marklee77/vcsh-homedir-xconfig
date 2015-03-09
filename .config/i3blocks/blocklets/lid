@@ -21,16 +21,14 @@ else
     exec "$0" "$@"
 fi
 
-#logfile="${HOME}/.local/var/log/${scriptname}.log"
-#exec 1>>${logfile}
-#exec 2>&1
+logfile="${HOME}/.local/var/log/${scriptname}.log"
+exec 1>>${logfile}
+exec 2>&1
 
 if [ "$lid_state" = "closed" ] && ! xrandr --current | grep " connected" | grep -v ^$laptop_screen -q; then
     if on_ac_power; then
-        echo "lock"
         laptop-lock &
     else
-        echo "sleep"
         laptop-smartsleep 
     fi
 fi
