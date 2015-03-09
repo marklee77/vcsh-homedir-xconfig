@@ -17,7 +17,8 @@ color=#839496
 interval=300
 
 [external ip]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
+command=laptop-blocklet-external-ip
 color=#839496
 interval=300
 
