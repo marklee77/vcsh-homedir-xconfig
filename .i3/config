@@ -2,6 +2,9 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# process acpi events
+exec --no-startup-id exec laptop-acpi-monitor-events
+
 # fix keyboard
 exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
 
@@ -13,7 +16,7 @@ exec --no-startup-id xsetroot -solid '#002b36'
 
 # flux
 # FIXME: script to auto-get geoip coords, update, cache, etc...
-exec --no-startup-id xflux -l 52 -g 0
+exec --no-startup-id exec xflux -l 52 -g 0
 
 # window fx
 #exec --no-startup-id compton --config .config/compton/compton.conf
