@@ -4,71 +4,51 @@ prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
 colors=("#dc322f" "#b58900" "#839496" "#859900")
 charging_prefix="\uf111"
 
+battery=${1:-BAT0}
 warn_percent=7
 hibernate_percent=5
 
-battery=${1:-BAT0}
-run_dir=${HOME}/.local/var/run/blocklets-battery
-mkdir -p $run_dir
+scriptname="$(basename $0)"
 
-#present_rate=$(perl -ane 'print $F[2] if /^present rate:/' /proc/acpi/battery/${battery}/state)
-#remaining_capacity=$(perl -ane 'print $F[2] if /^remaining capacity:/' /proc/acpi/battery/${battery}/state)
-#design_capacity=$(perl -ane 'print $F[2] if (/^design capacity:/);' /proc/acpi/battery/${battery}/info)
+logfile="${HOME}/.local/var/log/${scriptname}.log"
+exec 3>&1
+exec 1>${logfile}
+exec 2>&1
 
-present_rate=$(cat /sys/class/power_supply/${battery}/current_now)
-remaining_capacity=$(cat /sys/class/power_supply/${battery}/charge_now)
-design_capacity=$(cat /sys/class/power_supply/${battery}/charge_full)
+battery_capacity=$(cat /sys/class/power_supply/${battery}/capacity)
 
-percentage="$((100*$remaining_capacity/$design_capacity))"
 for i in $(seq 0 $((${#thresholds[@]}-1))); do
-    if [ $percentage -le ${thresholds[i]} ]; then
+    if [ $battery_capacity -le ${thresholds[i]} ]; then
         prefix=${prefixes[i]}
         color=${colors[i]}
         break
     fi
 done
 
-status="ok"
-previous_status=$(cat $run_dir/status 2>/dev/null)
-[ -z $previous_status ] && previous_status="ok"
-if on_ac_power || [ $present_rate -le 0 ]; then
+battery_status=$(cat /sys/class/power_supply/${battery}/status)
+
+if [ "$battery_status" = "Charging" ]; then
     prefix=$charging_prefix
 else
-    minutes_remaining=$(($remaining_capacity*60/$present_rate))
+    battery_current_now=$(cat /sys/class/power_supply/${battery}/current_now)
+    battery_charge_now=$(cat /sys/class/power_supply/${battery}/charge_now)
+    minutes_remaining=$(($battery_charge_now*60/$battery_current_now))
     hours_remaining=$(($minutes_remaining/60))
     minutes_remaining_partial=$(($minutes_remaining%60))
     if [ $minutes_remaining_partial -lt 10 ]; then
         minutes_remaining_partial="0$minutes_remaining_partial"
     fi
     time_remaining="$hours_remaining:$minutes_remaining_partial"
-
-    if [ $percentage -le $warn_percent ]; then
-        status="low"
-        if [ "$previous_status" = "ok" ]; then
-            notify-send --urgency=critical \
-                "Low Battery Warning!" \
-                "The battery charge is critically low. Please connect to AC power."
-        elif [ "$previous_status" = "low" ] && 
-             [ $percentage -le $hibernate_percent ]; then
-            notify-send --urgency=critical \
-                "Hibernating!" \
-                "If the computer is not plugged in within the next 30 seconds, hibernation procedures will commence."
-            sleep 30
-            on_ac_power || laptop-hibernate
-        fi
-    fi
 fi
 
-echo $status > $run_dir/status
-
-short_text="$prefix $percentage%"
+short_text="$prefix $battery_capacity%"
 full_text=$short_text
 [ -n $time_remaining ] && full_text="$full_text $time_remaining"
+
+exec >&3
 
 echo -e $full_text
 echo -e $short_text
 [ -n "$color" ] && echo $color
 
-[ $status = "critical" ] && exit 33
 exit 0
-
