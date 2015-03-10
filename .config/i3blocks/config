@@ -11,10 +11,10 @@ command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mrsync-status
 color=#839496
 interval=5
 
-#[weather]
-#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
-#color=#839496
-#interval=300
+[weather]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
+color=#839496
+interval=300
 
 [external ip]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
