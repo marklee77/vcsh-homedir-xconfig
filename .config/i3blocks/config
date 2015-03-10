@@ -61,14 +61,6 @@ align=right
 min_width=0000-00-00 00:00
 interval=30
 
-#[lid]
-#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/lid
-#interval=5
-
-#[screen]
-#command=${HOME}/.local/bin/laptop-screen-toggle-layout --nocycle
-#interval=5
-
 [mrsync]
 command=${HOME}/.local/bin/mrsync 2>&1 >/dev/null
 interval=600

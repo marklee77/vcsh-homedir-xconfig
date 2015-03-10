@@ -1,12 +1,21 @@
 #!/bin/bash
 prefix="\uf2dc"
 
-brightness=$(xbacklight)
+scriptname="$(basename $0)"
+
+logfile="${HOME}/.local/var/log/${scriptname}.log"
+exec 3>&1
+exec 1>${logfile}
+exec 2>&1
+
+brightness=$(xbacklight 2>/dev/null)
 
 [ -z "${brightness}" ] && exit 0
 
 short_text="$prefix ${brightness%%.*}%"
 full_text=$short_text
+
+exec >&3
 
 echo -e $full_text
 echo -e $short_text
