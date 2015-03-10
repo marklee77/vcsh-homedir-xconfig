@@ -1,5 +1,6 @@
 #!/bin/bash
 # Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
+# Copyright (C) 2014 Mark Stillwell <mark@stillwell.me>
 # with changes Copyright (C) 2014 Mark Stillwell <mark@stillwell.me>
 
 # This program is free software: you can redistribute it and/or modify
@@ -21,7 +22,14 @@ colors=("#dc322f" "#b58900" "#839496" "#859900")
 
 iface="${1:-wlan0}"
 
-state="$(cat /sys/class/net/$iface/operstate)"
+scriptname="$(basename $0)"
+
+logfile="${HOME}/.local/var/log/${scriptname}.log"
+exec 3>&1
+exec 1>${logfile}
+exec 2>&1
+
+state="$(cat /sys/class/net/$iface/operstate 2>/dev/null)"
 if [ "$state" != "up" ]; then
 	exit 0
 fi
@@ -44,11 +52,13 @@ if [ -n "$stats" ]; then
     done
 fi
 
-ipaddrs=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
-ipaddrs6=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet6 (.+)\/.*scope global/'))
+ipv4addrs=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
+ipv6addrs=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet6 (.+)\/.*scope global/'))
 
-full_text="$prefix ${ipaddrs[@]} ${ipaddrs6[0]} ($info)"
-short_text="$prefix ${ipaddrs[0]}"
+full_text="$prefix ${ipv4addrs[@]} ${ipv6addrs[0]} ($info)"
+short_text="$prefix ${ipv4addrs[0]}"
+
+exec >&3
 
 echo -e $full_text
 echo -e $short_text

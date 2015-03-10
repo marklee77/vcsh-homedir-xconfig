@@ -1,5 +1,6 @@
 #!/bin/bash
 # Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
+# Copyright (C) 2014 Mark Stillwell <mark@stillwell.me>
 # with changes Copyright (C) 2014 Mark Stillwell <mark@stillwell.me>
 
 # This program is free software: you can redistribute it and/or modify
@@ -20,20 +21,23 @@ color="#859900"
 
 iface="${1:-bnep0}"
 
-# state check does not work for bluetooth
-#state="$(cat /sys/class/net/$iface/operstate)"
-#if [ "$state" != "up" ]; then
-#	exit 0
-#fi
+scriptname="$(basename $0)"
 
-ipaddrs=($(ip addr show $iface 2>/dev/null | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
-ipaddrs6=($(ip addr show $iface 2>/dev/null | perl -ne 'print "$1\n" if /inet6 (.+)\/.*scope global/'))
-if [ ${#ipaddrs} = 0 ] && [ ${#ipaddrs6} = 0 ]; then
+logfile="${HOME}/.local/var/log/${scriptname}.log"
+exec 3>&1
+exec 1>${logfile}
+exec 2>&1
+
+ipv4addrs=($(ip addr show $iface 2>/dev/null | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
+ipv6addrs=($(ip addr show $iface 2>/dev/null | perl -ne 'print "$1\n" if /inet6 (.+)\/.*scope global/'))
+if [ ${#ipv4addrs} = 0 ] && [ ${#ipv6addrs} = 0 ]; then
     exit 0
 fi
 
-full_text="$prefix ${ipaddrs[@]} ${ipaddrs6[0]}"
-short_text="$prefix ${ipaddrs[0]}"
+full_text="$prefix ${ipv4addrs[@]} ${ipv6addrs[0]}"
+short_text="$prefix ${ipv4addrs[0]}"
+
+exec >&3
 
 echo -e $full_text
 echo -e $short_text
