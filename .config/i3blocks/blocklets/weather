@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # Copyright 2014 Mark Stillwell <mark@stillwell.me>
+# Licensing is GPLv2 or GPLv3
 # development platform is Ubuntu 14.04 (Trusty Tahir)
 # requries python, python-networkmanager, python-pycurl, python-simplejson
 # also requires a font with icons at the appropriate values
@@ -30,7 +31,6 @@ icons = {'01d': u'\ue601', '01n': u'\ue602',
 buf = BytesIO()
 c = pycurl.Curl()
 c.setopt(c.URL, "freegeoip.net/json/")
-c.setopt(c.WRITEDATA, buf)
 
 try:
     c.perform()

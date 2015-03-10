@@ -4,12 +4,12 @@ separator_block_width=12
 [mailsync-status]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mailsync-status
 color=#839496
-interval=15
+interval=5
 
 [mrsync-status]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mrsync-status
 color=#839496
-interval=15
+interval=5
 
 [weather]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
