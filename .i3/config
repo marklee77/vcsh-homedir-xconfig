@@ -5,8 +5,8 @@
 # process acpi events
 exec --no-startup-id exec laptop-acpi-monitor-events
 
-# process screen events
-exec --no-startup-id exec srandrd laptop-screen-toggle-layout --nocycle
+# process screen events; should possibly consider renaming script?
+exec --no-startup-id exec srandrd laptop-acpi-process-event-button_lid
 
 # fix keyboard
 #exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
