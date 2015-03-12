@@ -9,7 +9,7 @@ exec --no-startup-id exec laptop-acpi-monitor-events
 exec --no-startup-id exec srandrd laptop-screen-toggle-layout --nocycle
 
 # fix keyboard
-exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
+#exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
 
 # autolock
 exec --no-startup-id exec xautolock -time 10 -locker laptop-lock -killtime 20 -killer "on_ac_power || laptop-smartsleep" -secure
