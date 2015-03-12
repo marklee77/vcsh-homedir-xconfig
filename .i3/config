@@ -5,6 +5,9 @@
 # process acpi events
 exec --no-startup-id exec laptop-acpi-monitor-events
 
+# process screen events
+exec --no-startup-id exec srandrd laptop-screen-toggle-layout --nocycle
+
 # fix keyboard
 exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
 
@@ -213,7 +216,7 @@ for_window [title="Firefox Preferences"] floating enable
 # i3bar
 bar {
   position top
-  status_command i3blocks
+  status_command exec i3blocks
   tray_output primary
 }
 
