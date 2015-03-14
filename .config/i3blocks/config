@@ -57,7 +57,8 @@ signal=2
 [screen-layout]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/screen-layout
 color=#839496
-align=center
+align=right
+min_width=
 interval=once
 signal=3
 
