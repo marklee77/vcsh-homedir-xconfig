@@ -1,7 +1,15 @@
 #!/bin/bash
 icons=('\uf108' '\uf10b' '\uf0c8')
 
-text=${icons[2]}
+current_layout=$(cat ${HOME}/.local/var/run/laptop-screen-toggle-layout/layout 2>/dev/null)
 
-echo -e $text
+if [ "$current_layout" = "left-of" ]; then
+    text=${icons[0]}
+elif [ "$current_layout" = "right-of" ]; then
+    text=${icons[1]}
+elif [ "$current_layout" = "mirror" ]; then
+    text=${icons[2]}
+fi
+
+[ -n "$text" ] && echo -e $text
 exit 0
