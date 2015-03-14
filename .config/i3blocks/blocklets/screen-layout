@@ -1,0 +1,7 @@
+#!/bin/bash
+icons=('\uf108', '\uf10b', '\uf0c8')
+
+text=${icons[0]}
+
+echo -e $text
+exit 0

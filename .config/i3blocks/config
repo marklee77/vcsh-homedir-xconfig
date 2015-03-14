@@ -54,6 +54,13 @@ min_width= 100%
 interval=once
 signal=2
 
+[screen-layout]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/screen-layout
+color=#839496
+align=center
+interval=once
+signal=3
+
 [time]
 command=date '+%Y-%m-%d %H:%M'
 color=#839496
