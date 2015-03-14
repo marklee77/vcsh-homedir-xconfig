@@ -15,6 +15,10 @@ exec 3>&1
 exec 1>${logfile}
 exec 2>&1
 
+if [ -n "$BLOCK_BUTTON" ]; then
+    laptop-volume-set toggle
+fi
+
 info=($(amixer -c $card get $control | perl -ne 'print "$1 $2\n" if /^\s*Mono:.*\[(.+)%\].*\[.*\].*\[(.+)\].*/'))
 
 [ -z "${info}" ] && exit 0
