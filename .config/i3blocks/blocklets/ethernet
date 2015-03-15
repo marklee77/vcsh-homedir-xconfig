@@ -30,8 +30,8 @@ if [ "$state" != "up" ]; then
 	exit 0
 fi
 
-ipv4addrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
-ipv6addrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet6 (.+)\/.*scope global/'))
+ipv4addrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
+ipv6addrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet6 (\S+).*scope global/'))
 
 short_text="$prefix ${ipv4addrs[0]}"
 full_text="$prefix ${ipv4addrs[@]} ${ipv6addrs[0]}"

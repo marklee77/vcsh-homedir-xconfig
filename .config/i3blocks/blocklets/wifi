@@ -52,8 +52,8 @@ if [ -n "$stats" ]; then
     done
 fi
 
-ipv4addrs=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
-ipv6addrs=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet6 (.+)\/.*scope global/'))
+ipv4addrs=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
+ipv6addrs=($(ip addr show $iface | perl -ne 'print "$1\n" if /inet6 (\S+).*scope global/'))
 
 full_text="$prefix ${ipv4addrs[@]} ${ipv6addrs[0]} ($info)"
 short_text="$prefix ${ipv4addrs[0]}"
