@@ -21,18 +21,22 @@ command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
 color=#839496
 interval=300
 
-[wifi]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
-interval=5
-
-[bluetooth]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/bluetooth bnep0
-interval=5
-
-[ethernet]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/ethernet eth0
+[defaultnet]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/defaultnet
 color=#85990
 interval=5
+
+#[wifi]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/wifi wlan0
+#interval=5
+
+#[bluetooth]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/bluetooth bnep0
+#interval=5
+
+#[ethernet]
+#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/ethernet eth0
+#interval=5
 
 [battery]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/battery BAT0
