@@ -19,7 +19,7 @@ fi
 defaultdev=$(ip route | perl -ne 'print "$1\n" if /^default\s.*\sdev\s([^\s]+)/')
 defaultdevaddrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
 defaultip=${defaultdevaddrs[0]}
-["$externalip" = "$defaultip" ] && exit 0
+[ "$externalip" = "$defaultip" ] && exit 0
 
 full_text="$prefix $externalip"
 
