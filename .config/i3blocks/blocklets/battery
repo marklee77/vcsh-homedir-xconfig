@@ -5,8 +5,6 @@ colors=("#dc322f" "#b58900" "#839496" "#859900")
 charging_prefix="\uf111"
 
 battery=${1:-BAT0}
-warn_percent=7
-hibernate_percent=5
 
 scriptname="$(basename $0)"
 
@@ -50,5 +48,7 @@ exec >&3
 echo -e $full_text
 echo -e $short_text
 [ -n "$color" ] && echo $color
+
+[ $battery_capacity -le ${thresholds[0]} ] && exit 33
 
 exit 0
