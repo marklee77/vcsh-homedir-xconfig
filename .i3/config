@@ -201,7 +201,9 @@ bindsym XF86AudioMute exec --no-startup-id laptop-volume-set toggle
 
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+2 i3blocks
+bindsym $mod+F10 exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+2 i3blocks
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
+bindsym $mod+F9 exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
 
 # Assigns
 assign [class="Firefox"] 2
