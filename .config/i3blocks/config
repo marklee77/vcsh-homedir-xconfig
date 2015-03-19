@@ -14,12 +14,12 @@ interval=5
 [weather]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
 color=#839496
-interval=300
+interval=600
 
 [external ip]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
 color=#839496
-interval=300
+interval=120
 
 [defaultnet]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/defaultnet
