@@ -192,8 +192,8 @@ bindsym $mod+F6 exec --no-startup-id laptop-volume-set 2%-
 bindsym XF86AudioMute exec --no-startup-id laptop-volume-set toggle
 
 # micmute is note working...
-bindsym XF87AudioMicMute exec --no-startup-id "amixer -c 1 sset Capture,0 toggle"
-bindsym $mod+F8 exec --no-startup-id "amixer -c 1 sset Capture,0 toggle"
+bindsym XF87AudioMicMute exec --no-startup-id amixer -c 1 set Capture toggle
+bindsym $mod+F8 exec --no-startup-id amixer -c 1 set Capture toggle
 
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+2 i3blocks
