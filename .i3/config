@@ -6,19 +6,19 @@ exec --no-startup-id exec srandrd laptop-acpi-process-event-button_lid
 
 # fix keyboard
 #exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
-exec --no-startup-id laptop-keyboard-set-layout
+exec --no-startup-id exec laptop-keyboard-set-layout
 
 # autolock
 exec --no-startup-id exec xautolock -time 10 -locker laptop-lock -killtime 20 -killer "on_ac_power || laptop-smartsleep" -secure
 
 # solarized background color
-exec --no-startup-id xsetroot -solid '#002b36'
+exec --no-startup-id exec xsetroot -solid '#002b36'
 
 # f.lux
 exec --no-startup-id exec laptop-autoxflux
 
 # window fx
-#exec --no-startup-id compton --config .config/compton/compton.conf
+#exec --no-startup-id exec compton --config .config/compton/compton.conf
 
 # display notifications
 exec --no-startup-id exec dunst
@@ -56,7 +56,7 @@ bindsym $mod+Shift+F exec exec firefox
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -b
+bindsym $mod+d exec exec dmenu_run -b
 
 # start screensaver lock
 bindsym Control+$mod+l exec --no-startup-id exec laptop-lock
