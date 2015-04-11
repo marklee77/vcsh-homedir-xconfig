@@ -12,13 +12,13 @@ exec --no-startup-id exec laptop-keyboard-set-layout
 exec --no-startup-id exec xautolock -time 10 -locker laptop-lock -killtime 20 -killer "on_ac_power || laptop-smartsleep" -secure
 
 # solarized background color
-exec --no-startup-id exec xsetroot -solid '#002b36'
+exec --no-startup-id exec hsetroot -solid '#002b36'
 
 # f.lux
 exec --no-startup-id exec laptop-autoxflux
 
 # window fx
-#exec --no-startup-id exec compton --config .config/compton/compton.conf
+exec --no-startup-id exec compton --config .config/compton/compton.conf -b
 
 # display notifications
 exec --no-startup-id exec dunst
