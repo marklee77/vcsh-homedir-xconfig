@@ -19,7 +19,7 @@ exec --no-startup-id exec laptop-autoxflux
 
 # window fx
 #exec --no-startup-id exec compton --config .config/compton/compton.conf -b
-exec --no-startup-id exec compton -b
+#exec --no-startup-id exec compton -b
 
 # display notifications
 exec --no-startup-id exec dunst
