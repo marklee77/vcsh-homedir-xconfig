@@ -180,7 +180,7 @@ bindsym $mod+Escape mode "default"
 bindsym $mod+r mode "resize"
 
 # toggle transparency
-#bindsym $mod+t exec --no-startup-id exec transset -a -t 0.75
+bindsym $mod+o exec --no-startup-id exec transset -a -t 0.75
 
 ## Special Keys
 
