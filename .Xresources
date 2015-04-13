@@ -81,7 +81,7 @@ urxvt.savelines:          0
 urxvt.scrollWithBuffer:   false
 urxvt.skipScroll:         true
 urxvt.depth:              32
-urxvt.background:         [80]S_base03
+urxvt.background:         [90]S_base03
 
 ! fix for ugly font spacing
 urxvt.letterSpace:        -1
