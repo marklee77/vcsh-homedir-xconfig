@@ -36,7 +36,7 @@ exec --no-startup-id exec unclutter -idle 5 -root
 exec --no-startup-id exec gvfs-automount
 
 # conky
-#exec --no-startup-id exec conky
+exec --no-startup-id exec conky
 
 set $mod Mod4
 new_window 1pixel
