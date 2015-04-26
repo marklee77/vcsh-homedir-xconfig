@@ -1,20 +1,18 @@
 #!/bin/bash
-
 scriptname="$(basename $0)"
 
-logfile="${HOME}/.local/var/log/${scriptname}.log"
-exec 3>&1
-exec 1>${logfile}
-exec 2>&1
+errfile="${HOME}/.local/var/log/${scriptname}.err"
+exec 2>${errfile}
+
+rundir="${HOME}/.local/var/run/mailsync"
+if ls ${rundir}/*.error 
 
 lockdir="${HOME}/.local/var/lock/mailsync"
 pidfile="${lockdir}/PID"
 otherpid=$(cat ${pidfile} 2>/dev/null)
 othercmd=$(ps --no-headers --format command --pid ${otherpid})
-if ! [[ "${othercmd}" =~ .*mailsync.* ]]; then
-    exit 0
+if [[ "${othercmd}" =~ .*mailsync.* ]]; then
+    echo -e "\uf021\uf132"
 fi
 
-exec >&3
-
-echo -e "\uf021\uf132"
+exit 0
