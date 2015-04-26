@@ -5,7 +5,10 @@ errfile="${HOME}/.local/var/log/${scriptname}.err"
 exec 2>${errfile}
 
 rundir="${HOME}/.local/var/run/mailsync"
-if ls ${rundir}/*.error 
+if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
+    echo -e " \uf132: mail sync error"
+    exit 33
+fi
 
 lockdir="${HOME}/.local/var/lock/mailsync"
 pidfile="${lockdir}/PID"
