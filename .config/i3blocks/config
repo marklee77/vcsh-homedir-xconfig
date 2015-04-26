@@ -10,7 +10,8 @@ signal=4
 [mrsync-status]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/mrsync-status
 color=#839496
-interval=5
+interval=once
+signal=5
 
 [weather]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
