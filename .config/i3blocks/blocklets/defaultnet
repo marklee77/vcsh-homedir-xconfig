@@ -3,7 +3,7 @@ scriptdir=$(dirname $0)
 
 iface=$(ip route | perl -lne 'print $1 if /^default\b.*?\sdev\s(\S+)/')
 case $iface in
-    tun*)
+    tun*|ppp*)
     $scriptdir/vpn $iface
     ;;
     wlan*)
