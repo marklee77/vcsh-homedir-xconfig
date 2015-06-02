@@ -116,16 +116,16 @@ bindsym $mod+a focus parent
 
 # switch to workspace
 workspace_auto_back_and_forth yes
-bindsym $mod+1 exec i3-msg workspace 1 && synclient TouchpadOff=1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 exec i3-msg workspace 1  && synclient TouchpadOff=1
+bindsym $mod+2 exec i3-msg workspace 2  && synclient TouchpadOff=0
+bindsym $mod+3 exec i3-msg workspace 3  && synclient TouchpadOff=0
+bindsym $mod+4 exec i3-msg workspace 4  && synclient TouchpadOff=0
+bindsym $mod+5 exec i3-msg workspace 5  && synclient TouchpadOff=0
+bindsym $mod+6 exec i3-msg workspace 6  && synclient TouchpadOff=0
+bindsym $mod+7 exec i3-msg workspace 7  && synclient TouchpadOff=0
+bindsym $mod+8 exec i3-msg workspace 8  && synclient TouchpadOff=0
+bindsym $mod+9 exec i3-msg workspace 9  && synclient TouchpadOff=0
+bindsym $mod+0 exec i3-msg workspace 10 && synclient TouchpadOff=0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move workspace 1
