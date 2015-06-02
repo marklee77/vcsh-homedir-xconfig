@@ -51,9 +51,7 @@ font pango:DejaVu Sans Mono for Powerline, IcoMoon 11
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec exec st-dark
 bindsym $mod+Return exec exec urxvtcd
-bindsym $mod+Shift+Return exec exec st-light
 
 bindsym $mod+Shift+F exec exec firefox
 
