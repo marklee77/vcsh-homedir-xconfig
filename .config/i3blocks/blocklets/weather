@@ -27,32 +27,32 @@ icons = {'01d': u'\ue601', '01n': u'\ue602',
          '13d': u'\ue616', '13n': u'\ue616',
          '50d': u'\ue609', '50n': u'\ue60a'}
 
-buf = BytesIO()
 c = pycurl.Curl()
-c.setopt(c.URL, "freegeoip.net/json/")
-c.setopt(c.WRITEDATA, buf)
 
 try:
+    # get geo info
+    buf = BytesIO()
+    c.setopt(c.URL, "freegeoip.net/json/")
+    c.setopt(c.WRITEDATA, buf)
     c.perform()
     geoinfo = json.loads(buf.getvalue())
-except Exception:
-    exit(0)
 
-buf = BytesIO()
-c = pycurl.Curl()
-c.setopt(c.URL, 'api.openweathermap.org/data/2.5/weather?lat={latitude}'
-                '&lon={longitude}&units=metric'.format(**geoinfo))
-c.setopt(c.WRITEDATA, buf)
-
-try:
+    # assuming we have geo info, get the weather
+    buf = BytesIO()
+    c.setopt(c.URL, 'api.openweathermap.org/data/2.5/weather?lat={latitude}'
+                    '&lon={longitude}&units=metric'.format(**geoinfo))
+    c.setopt(c.WRITEDATA, buf)
     c.perform()
     weatherinfo = json.loads(buf.getvalue())
+
+    # generate short text, assuming correct response from weather...
+    short_text = (u' '.join(set(icons[w['icon']] for w in
+                                weatherinfo['weather'])) +
+                  u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
+                  ).encode('utf-8')
+
 except Exception:
     exit(0)
-
-short_text = (u' '.join(set(icons[w['icon']] for w in weatherinfo['weather']))
-              + u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
-              ).encode('utf-8')
 
 print short_text
 exit(0)
