@@ -207,6 +207,9 @@ bindsym $mod+F10 exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
 bindsym $mod+F9 exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
 
+# toggle pointer
+bindsym $mod+p exec --no-startup-id laptop-pointer-set
+
 # Assigns
 assign [class="Firefox"] 2
 
@@ -220,6 +223,9 @@ for_window [class="fontforge"] floating enable
 # Firefox
 for_window [title="Library"] floating enable
 for_window [title="Firefox Preferences"] floating enable
+
+# autocommands
+for_window [class="urxvt"] exec --no-startup-id laptop-pointer-set off
 
 # i3bar
 bar {
