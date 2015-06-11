@@ -225,7 +225,7 @@ for_window [title="Library"] floating enable
 for_window [title="Firefox Preferences"] floating enable
 
 # URxvt
-for_window [class="urxvt"] floating enable
+for_window [class="URxvt"] floating enable
 
 # i3bar
 bar {
