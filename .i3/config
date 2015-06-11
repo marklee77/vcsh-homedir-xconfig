@@ -224,6 +224,9 @@ for_window [class="fontforge"] floating enable
 for_window [title="Library"] floating enable
 for_window [title="Firefox Preferences"] floating enable
 
+# URxvt
+for_window [class="urxvt"] fullscreen
+
 # i3bar
 bar {
   position top
