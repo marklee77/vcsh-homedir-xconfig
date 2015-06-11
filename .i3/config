@@ -116,16 +116,16 @@ bindsym $mod+a focus parent
 
 # switch to workspace
 # workspace_auto_back_and_forth yes
-bindsym $mod+1 exec i3-msg workspace 1
-bindsym $mod+2 exec i3-msg workspace 2  
-bindsym $mod+3 exec i3-msg workspace 3  
-bindsym $mod+4 exec i3-msg workspace 4  
-bindsym $mod+5 exec i3-msg workspace 5  
-bindsym $mod+6 exec i3-msg workspace 6  
-bindsym $mod+7 exec i3-msg workspace 7  
-bindsym $mod+8 exec i3-msg workspace 8  
-bindsym $mod+9 exec i3-msg workspace 9  
-bindsym $mod+0 exec i3-msg workspace 10 
+bindsym $mod+1 exec i3-msg workspace 1  && laptop-pointer-set off
+bindsym $mod+2 exec i3-msg workspace 2  && laptop-pointer-set on
+bindsym $mod+3 exec i3-msg workspace 3  && laptop-pointer-set on
+bindsym $mod+4 exec i3-msg workspace 4  && laptop-pointer-set on
+bindsym $mod+5 exec i3-msg workspace 5  && laptop-pointer-set on
+bindsym $mod+6 exec i3-msg workspace 6  && laptop-pointer-set on
+bindsym $mod+7 exec i3-msg workspace 7  && laptop-pointer-set on
+bindsym $mod+8 exec i3-msg workspace 8  && laptop-pointer-set on
+bindsym $mod+9 exec i3-msg workspace 9  && laptop-pointer-set on
+bindsym $mod+0 exec i3-msg workspace 10 && laptop-pointer-set on
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move workspace 1
@@ -223,9 +223,6 @@ for_window [class="fontforge"] floating enable
 # Firefox
 for_window [title="Library"] floating enable
 for_window [title="Firefox Preferences"] floating enable
-
-# URxvt
-for_window [class="URxvt"] exec --no-startup-id exec laptop-pointer-set off
 
 # i3bar
 bar {
