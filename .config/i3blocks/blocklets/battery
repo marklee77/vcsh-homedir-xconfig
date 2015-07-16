@@ -1,10 +1,4 @@
 #!/bin/bash
-
-# FIXME: remove
-if [ -n "$BLOCK_BUTTON" ]; then
-    urxvtcd
-fi
-
 thresholds=(15 40 95 100)
 prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
 colors=("#dc322f" "#b58900" "#839496" "#859900")
