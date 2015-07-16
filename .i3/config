@@ -117,7 +117,7 @@ bindsym $mod+a focus parent
 
 # switch to workspace
 # workspace_auto_back_and_forth yes
-bindsym $mod+1 exec i3-msg workspace 1  && laptop-pointer-set off
+bindsym $mod+1 exec i3-msg workspace 1  && laptop-pointer-set on
 bindsym $mod+2 exec i3-msg workspace 2  && laptop-pointer-set on
 bindsym $mod+3 exec i3-msg workspace 3  && laptop-pointer-set on
 bindsym $mod+4 exec i3-msg workspace 4  && laptop-pointer-set on
