@@ -213,6 +213,8 @@ bindsym $mod+p exec --no-startup-id laptop-pointer-set
 
 # screenshots
 bindsym Print exec --no-startup-id exec scrot
+bindsym Shift+Print exec --no-startup-id exec scrot -u
+bindsym $mod+Print exec --no-startup-id exec scrot -s
 
 # Assigns
 assign [class="Firefox"] 2
