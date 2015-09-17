@@ -211,6 +211,9 @@ bindsym $mod+F9 exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2
 # toggle pointer
 bindsym $mod+p exec --no-startup-id laptop-pointer-set
 
+# screenshots
+bindsym Print exec --no-startup-id exec scrot
+
 # Assigns
 assign [class="Firefox"] 2
 
