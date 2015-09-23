@@ -5,7 +5,6 @@ exec --no-startup-id exec laptop-acpi-monitor-events
 exec --no-startup-id exec srandrd laptop-acpi-process-event-button_lid
 
 # fix keyboard
-#exec --no-startup-id setxkbmap gb -option inet:evdev -option caps:escape -option compose:menu
 exec --no-startup-id exec laptop-keyboard-set-layout
 
 # autolock
