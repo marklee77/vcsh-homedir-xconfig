@@ -6,10 +6,16 @@ exec 3>&1
 exec 1>${logfile}
 exec 2>&1
 
+rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mrsync"
+if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
+    echo -e " \uf233: mr sync error"
+    exit 33
+fi
+
 lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mrsync.lock"
 pidfile="${lockdir}/PID"
 otherpid=$(cat ${pidfile} 2>/dev/null)
-othercmd=$(ps --no-headers --format command --pid ${otherpid})
+othercmd=$(ps --no-headers --format command --pid ${otherpid} 2>/dev/null)
 if ! [[ "${othercmd}" =~ .*mrsync.* ]]; then
     exit 0
 fi

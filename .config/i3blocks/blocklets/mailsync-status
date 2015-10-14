@@ -1,8 +1,10 @@
 #!/bin/bash
 scriptname="$(basename $0)"
 
-errfile="${HOME}/.local/var/log/${scriptname}.err"
-exec 2>${errfile}
+logfile="${HOME}/.local/var/log/${scriptname}.log"
+exec 3>&1
+exec 1>${logfile}
+exec 2>&1
 
 rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mailsync"
 if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
@@ -14,8 +16,10 @@ lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mailsync.lock"
 pidfile="${lockdir}/PID"
 otherpid=$(cat ${pidfile} 2>/dev/null)
 othercmd=$(ps --no-headers --format command --pid ${otherpid} 2>/dev/null)
-if [[ "${othercmd}" =~ .*mailsync.* ]]; then
-    echo -e "\uf021\uf132"
+if ! [[ "${othercmd}" =~ .*mailsync.* ]]; then
+    exit 0
 fi
+  
+exec >&3
 
-exit 0
+echo -e "\uf021\uf132"
