@@ -5,7 +5,7 @@ if [ -n "$BLOCK_BUTTON" ]; then
     laptop-screen-toggle-layout
 fi
 
-current_layout=$(cat ${HOME}/.local/var/run/laptop-screen-toggle-layout/layout 2>/dev/null)
+current_layout=$(cat ${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/laptop-screen-toggle-layout/layout 2>/dev/null)
 
 if [ "$current_layout" = "left-of" ]; then
     text=${icons[0]}
