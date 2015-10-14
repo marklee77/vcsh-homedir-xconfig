@@ -6,7 +6,7 @@ exec 3>&1
 exec 1>${logfile}
 exec 2>&1
 
-lockdir="${HOME}/.local/var/lock/mrsync"
+lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mrsync.lock"
 pidfile="${lockdir}/PID"
 otherpid=$(cat ${pidfile} 2>/dev/null)
 othercmd=$(ps --no-headers --format command --pid ${otherpid})
