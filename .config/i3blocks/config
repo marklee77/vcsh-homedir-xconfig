@@ -63,9 +63,9 @@ align=right
 min_width=0000-00-00 00:00
 interval=30
 
-[mrsync]
-command=${HOME}/.local/bin/mrsync
-interval=600
+#[mrsync]
+#command=${HOME}/.local/bin/mrsync
+#interval=600
 
 #[mailsync]
 #command=${HOME}/.local/bin/mailsync
