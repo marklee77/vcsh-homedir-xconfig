@@ -13,6 +13,9 @@
 !.config/mr
 !.config/mr/config.d
 !.config/mr/config.d/xconfig
+!.config/supervisord
+!.config/supervisord/config.d
+!.config/supervisord/config.d/xconfig
 !.dmrc
 !.gitignore.d
 !.gitignore.d/xconfig
