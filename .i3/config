@@ -2,7 +2,7 @@
 #exec --no-startup-id exec laptop-acpi-monitor-events
 
 # process screen events; should possibly consider renaming script?
-exec --no-startup-id exec srandrd laptop-acpi-process-event-button_lid
+#exec --no-startup-id exec srandrd laptop-acpi-process-event-button_lid
 
 # fix keyboard
 exec --no-startup-id exec laptop-keyboard-set-layout
