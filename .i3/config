@@ -7,11 +7,11 @@
 # fix keyboard
 exec --no-startup-id exec laptop-keyboard-set-layout
 
-# autolock
-exec --no-startup-id exec xautolock -time 10 -locker laptop-lock -killtime 20 -killer "on_ac_power || laptop-smartsleep" -secure
-
 # solarized background color
 exec --no-startup-id exec hsetroot -solid '#002b36'
+
+# autolock
+exec --no-startup-id exec xautolock -time 10 -locker laptop-lock -killtime 20 -killer "on_ac_power || laptop-smartsleep" -secure
 
 # f.lux
 #exec --no-startup-id exec laptop-autoxflux
