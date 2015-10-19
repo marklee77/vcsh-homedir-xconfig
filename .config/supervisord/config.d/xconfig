@@ -1,3 +1,7 @@
+[program:compton]
+command=compton
+autorestart=true
+
 [program:xflux]
 command=xflux -l 52 -g 0 -nofork
 autorestart=true
