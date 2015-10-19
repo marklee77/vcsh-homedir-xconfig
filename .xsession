@@ -14,5 +14,5 @@ if [ -d "${XSESSIONRCDIR}" ]; then
 fi
 
 # start window manager
-#exec /usr/bin/i3
-exec supervisord -n -c ${XDG_CONFIG_HOME:-${HOME}/.config}/supervisord/supervisord.conf
+exec /usr/bin/i3
+#exec supervisord -n -c ${XDG_CONFIG_HOME:-${HOME}/.config}/supervisord/supervisord.conf
