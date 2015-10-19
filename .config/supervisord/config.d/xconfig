@@ -1,3 +1,8 @@
+[program:i3]
+command=i3
+priority=10
+autorestart=true
+
 [program:compton]
 command=compton
 autorestart=true
