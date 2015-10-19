@@ -2,8 +2,20 @@
 command=compton
 autorestart=true
 
+[program:conky]
+command=conky
+autorestart=true
+
 [program:dunst]
 command=dunst
+autorestart=true
+
+[program:gvfs-automount]
+command=gvfs-automount
+autorestart=true
+
+[program:unclutter]
+command=unclutter -idle 5 -root
 autorestart=true
 
 [program:xflux]
