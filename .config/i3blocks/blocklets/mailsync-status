@@ -15,4 +15,9 @@ if [[ "${othercmd}" =~ .*mailsync.* ]]; then
 fi
   
 queuedir="${HOME}/.local/var/spool/msmtpqueue"
-if find ${queuedir}/* -type f >/dev/null 2>/dev/null; then
+if ls ${queuedir}/*.msmtp >/dev/null 2>/dev/null; then
+    echo -e "\uf01c\uf132"
+    exit 0
+fi
+
+exit 0
