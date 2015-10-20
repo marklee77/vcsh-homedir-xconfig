@@ -16,7 +16,7 @@ fi
   
 queuedir="${HOME}/.local/var/spool/msmtpqueue"
 if ls ${queuedir}/*.msmtp >/dev/null 2>/dev/null; then
-    echo -e "\uf01c\uf132"
+    echo -e "\uf10e\uf132"
     exit 0
 fi
 
