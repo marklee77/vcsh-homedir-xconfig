@@ -23,6 +23,10 @@ autorestart=true
 command=unclutter -idle 5 -root
 autorestart=true
 
+[program:urxvtd]
+command=urxvtd
+autorestart=true
+
 [program:xflux]
 command=xflux -l 52 -g 0 -nofork
 autorestart=true
