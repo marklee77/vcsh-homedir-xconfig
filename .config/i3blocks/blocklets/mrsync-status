@@ -1,25 +1,23 @@
 #!/bin/bash
-scriptname="$(basename $0)"
 
-logfile="${HOME}/.local/var/log/${scriptname}.log"
-exec 3>&1
-exec 1>${logfile}
-exec 2>&1
-
-rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mrsync"
-if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
-    echo -e " \uf233: mr sync error"
-    exit 33
-fi
+info=""
+exitcode=0
 
 lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mrsync.lock"
 pidfile="${lockdir}/PID"
 otherpid=$(cat ${pidfile} 2>/dev/null)
 othercmd=$(ps --no-headers --format command --pid ${otherpid} 2>/dev/null)
-if ! [[ "${othercmd}" =~ .*mrsync.* ]]; then
-    exit 0
+if [[ "${othercmd}" =~ .*mrsync.* ]]; then
+    info="\uf021"
 fi
 
-exec >&3
+rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mrsync"
+if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
+    exitcode=33
+fi
 
-echo -e "\uf021\uf233"
+if [ -n "$info" ] || [ $exitcode -ne 0 ]; then
+    echo -e "$info\uf233"
+fi
+
+exit $exitcode

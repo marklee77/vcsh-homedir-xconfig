@@ -1,23 +1,28 @@
 #!/bin/bash
 
+info=""
+exitcode=0
+
+queuedir="${HOME}/.local/var/spool/msmtpqueue"
+if ls ${queuedir}/*.msmtp >/dev/null 2>/dev/null; then
+    info="\uf10e"
+fi
 
 lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mailsync.lock"
 pidfile="${lockdir}/PID"
 otherpid=$(cat ${pidfile} 2>/dev/null)
 othercmd=$(ps --no-headers --format command --pid ${otherpid} 2>/dev/null)
 if [[ "${othercmd}" =~ .*mailsync.* ]]; then
-    echo -e "\uf021\uf132"
+    info="\uf021"
 fi
   
-queuedir="${HOME}/.local/var/spool/msmtpqueue"
-if ls ${queuedir}/*.msmtp >/dev/null 2>/dev/null; then
-    echo -e "\uf10e\uf132"
-fi
-
 rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mailsync"
 if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
-    echo -e " \uf132"
-    exit 33
+    exitcode=33
 fi
 
-exit 0
+if [ -n "$info" ] || [ $exitcode -ne 0 ]; then
+    echo -e "$info\uf132"
+fi
+
+exit $exitcode
