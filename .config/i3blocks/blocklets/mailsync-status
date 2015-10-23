@@ -1,23 +1,23 @@
 #!/bin/bash
+
+
 lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mailsync.lock"
 pidfile="${lockdir}/PID"
 otherpid=$(cat ${pidfile} 2>/dev/null)
 othercmd=$(ps --no-headers --format command --pid ${otherpid} 2>/dev/null)
 if [[ "${othercmd}" =~ .*mailsync.* ]]; then
     echo -e "\uf021\uf132"
-    exit 0
 fi
   
+queuedir="${HOME}/.local/var/spool/msmtpqueue"
+if ls ${queuedir}/*.msmtp >/dev/null 2>/dev/null; then
+    echo -e "\uf10e\uf132"
+fi
+
 rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mailsync"
 if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
     echo -e " \uf132"
     exit 33
-fi
-
-queuedir="${HOME}/.local/var/spool/msmtpqueue"
-if ls ${queuedir}/*.msmtp >/dev/null 2>/dev/null; then
-    echo -e "\uf10e\uf132"
-    exit 0
 fi
 
 exit 0
