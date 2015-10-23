@@ -1,10 +1,4 @@
 #!/bin/bash
-rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mailsync"
-if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
-    echo -e " \uf132: mail sync error"
-    exit 33
-fi
-
 lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mailsync.lock"
 pidfile="${lockdir}/PID"
 otherpid=$(cat ${pidfile} 2>/dev/null)
@@ -14,6 +8,12 @@ if [[ "${othercmd}" =~ .*mailsync.* ]]; then
     exit 0
 fi
   
+rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mailsync"
+if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
+    echo -e " \uf132"
+    exit 33
+fi
+
 queuedir="${HOME}/.local/var/spool/msmtpqueue"
 if ls ${queuedir}/*.msmtp >/dev/null 2>/dev/null; then
     echo -e "\uf10e\uf132"
