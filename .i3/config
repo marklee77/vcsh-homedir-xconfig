@@ -133,7 +133,8 @@ bindsym $mod+Shift+C reload
 bindsym $mod+Shift+R restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
+#bindsym $mod+Shift+E exit
+bindsym $mod+Shift+E exec --no-startup-id pkill -u $USER ".*"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
