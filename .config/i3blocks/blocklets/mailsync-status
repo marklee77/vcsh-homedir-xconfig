@@ -8,6 +8,11 @@ if ls ${queuedir}/*.msmtp >/dev/null 2>/dev/null; then
     info="\uf10e"
 fi
 
+inbox="${HOME}/.maildir/new"
+if ls ${inbox}/* >/dev/null 2>/dev/null; then
+    info="$info\uf105"
+fi
+
 lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mailsync.lock"
 pidfile="${lockdir}/PID"
 otherpid=$(cat ${pidfile} 2>/dev/null)
