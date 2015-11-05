@@ -13,9 +13,9 @@ if ! nm-online -x || ! ping -c 1 8.8.8.8 2>&1 >/dev/null; then
 fi
 
 # ifconfig.co is another option
-externalip=$(curl -s freegeoip.net/csv/ | perl -lne 'print $1 if /^((?:\d{1,3}\.){3}\d{1,3}),/')
+externalip=$(curl -s https://freegeoip.net/csv/ | perl -lne 'print $1 if /^((?:\d{1,3}\.){3}\d{1,3}),/')
 if [ -z "$externalip" ]; then
-    externalip=$(curl -s ifconfig.me/ip | perl -ne 'print if /^(?:\d{1,3}\.){3}\d{1,3}$/')
+    externalip=$(curl -s https://ifconfig.me/ip | perl -ne 'print if /^(?:\d{1,3}\.){3}\d{1,3}$/')
 fi
 [ -z "$externalip" ] && exit 0
 
