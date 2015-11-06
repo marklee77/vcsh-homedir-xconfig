@@ -13,5 +13,5 @@ if [ -d "${XSESSIONRCDIR}" ]; then
     done
 fi
 
-# start window manager
+export PATH="${HOME}/.local/bin:${PATH}"
 exec supervisord -n -c ${XDG_CONFIG_HOME:-${HOME}/.config}/supervisord/supervisord.conf
