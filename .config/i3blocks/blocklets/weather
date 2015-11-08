@@ -32,7 +32,7 @@ c = pycurl.Curl()
 try:
     # get geo info
     buf = BytesIO()
-    c.setopt(c.URL, "freegeoip.net/json/")
+    c.setopt(c.URL, "https://freegeoip.net/json/")
     c.setopt(c.WRITEDATA, buf)
     c.perform()
     geoinfo = json.loads(buf.getvalue())
