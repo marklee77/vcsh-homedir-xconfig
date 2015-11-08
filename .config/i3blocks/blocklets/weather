@@ -37,9 +37,13 @@ try:
     c.perform()
     geoinfo = json.loads(buf.getvalue())
 
+    # read apikey from text file
+    apikey = open("weather_apikey.txt", "r").read()
+
     # assuming we have geo info, get the weather
     buf = BytesIO()
-    c.setopt(c.URL, 'api.openweathermap.org/data/2.5/weather?lat={latitude}'
+    c.setopt(c.URL, 'api.openweathermap.org/data/2.5/weather?APPID={apikey}
+                    'lat={latitude}'
                     '&lon={longitude}&units=metric'.format(**geoinfo))
     c.setopt(c.WRITEDATA, buf)
     c.perform()
