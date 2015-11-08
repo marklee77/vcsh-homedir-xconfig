@@ -38,13 +38,16 @@ try:
     geoinfo = json.loads(buf.getvalue())
 
     # read apikey from text file
-    apikey = open("weather_apikey.txt", "r").read()
+    apikey = open("weather_apikey.txt", "r").read().rstrip()
+
+    params = {'apikey': apikey}
+    params.update(geoinfo)
 
     # assuming we have geo info, get the weather
     buf = BytesIO()
-    c.setopt(c.URL, 'api.openweathermap.org/data/2.5/weather?APPID={apikey}
-                    'lat={latitude}'
-                    '&lon={longitude}&units=metric'.format(**geoinfo))
+    c.setopt(c.URL, 'api.openweathermap.org/data/2.5/weather?'
+                    'APPID={apikey}&lat={latitude}&lon={longitude}'
+                    '&units=metric'.format(**params))
     c.setopt(c.WRITEDATA, buf)
     c.perform()
     weatherinfo = json.loads(buf.getvalue())
