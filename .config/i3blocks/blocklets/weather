@@ -38,7 +38,7 @@ try:
     geoinfo = json.loads(buf.getvalue())
 
     # read apikey from text file
-    apikey = open("weather_apikey.txt", "r").read().rstrip()
+    apikey = open("/home/mark/.config/i3blocks/blocklets/weather_apikey.txt", "r").read().rstrip()
 
     params = {'apikey': apikey}
     params.update(geoinfo)
