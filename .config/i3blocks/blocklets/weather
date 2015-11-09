@@ -46,8 +46,6 @@ try:
     apikey = open(os.path.join(scriptdir, 'weather_apikey.txt'),
                   'r').read().rstrip()
 
-    print apikey
-
     params = {'apikey': apikey}
     params.update(geoinfo)
 
