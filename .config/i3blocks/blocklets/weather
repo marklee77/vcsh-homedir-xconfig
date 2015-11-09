@@ -8,8 +8,11 @@
 
 from NetworkManager import NetworkManager as nm
 
+import os
 import pycurl
 import simplejson as json
+import sys
+
 from io import BytesIO
 
 if not nm.ActiveConnections:
@@ -27,6 +30,8 @@ icons = {'01d': u'\ue601', '01n': u'\ue602',
          '13d': u'\ue616', '13n': u'\ue616',
          '50d': u'\ue609', '50n': u'\ue60a'}
 
+scriptdir = os.path.dirname(sys.argv[0])
+
 c = pycurl.Curl()
 
 try:
@@ -38,7 +43,10 @@ try:
     geoinfo = json.loads(buf.getvalue())
 
     # read apikey from text file
-    apikey = open("/home/mark/.config/i3blocks/blocklets/weather_apikey.txt", "r").read().rstrip()
+    apikey = open(os.path.join(scriptdir, 'weather_apikey.txt'),
+                  'r').read().rstrip()
+
+    print apikey
 
     params = {'apikey': apikey}
     params.update(geoinfo)
