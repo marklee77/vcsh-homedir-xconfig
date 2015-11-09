@@ -35,6 +35,12 @@ scriptdir = os.path.dirname(sys.argv[0])
 c = pycurl.Curl()
 
 try:
+    # read apikey from text file
+    apikey = open(os.path.join(scriptdir, 'weather_apikey.txt'),
+                  'r').read().rstrip()
+
+    params = {'apikey': apikey}
+
     # get geo info
     buf = BytesIO()
     c.setopt(c.URL, "https://freegeoip.net/json/")
@@ -42,11 +48,6 @@ try:
     c.perform()
     geoinfo = json.loads(buf.getvalue())
 
-    # read apikey from text file
-    apikey = open(os.path.join(scriptdir, 'weather_apikey.txt'),
-                  'r').read().rstrip()
-
-    params = {'apikey': apikey}
     params.update(geoinfo)
 
     # assuming we have geo info, get the weather
