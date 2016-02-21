@@ -23,6 +23,10 @@ autorestart=true
 command=unclutter -idle 5 -root
 autorestart=true
 
+[program:syndaemon]
+command=syndaemon -i 1
+autorestart=true
+
 [program:urxvtd]
 command=urxvtd
 autorestart=true
