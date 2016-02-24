@@ -18,7 +18,7 @@ battery_capacity=$(cat /sys/class/power_supply/${battery}/capacity)
 for i in $(seq 0 $((${#thresholds[@]}-1))); do
     if [ $battery_capacity -le ${thresholds[i]} ]; then
         prefix=${prefixes[i]}
-        color=${colors[i]}
+        discharge_color=${colors[i]}
         break
     fi
 done
@@ -27,10 +27,11 @@ battery_status=$(cat /sys/class/power_supply/${battery}/status)
 
 if [ "$battery_status" = "Charging" ]; then
     prefix=$charging_prefix
-else
-    battery_current_now=$(cat /sys/class/power_supply/${battery}/current_now)
-    battery_charge_now=$(cat /sys/class/power_supply/${battery}/charge_now)
-    minutes_remaining=$(($battery_charge_now*60/$battery_current_now))
+elif [ "$battery_status" = "Discharging" ]; then
+    color=$discharge_color
+    battery_power_now=$(cat /sys/class/power_supply/${battery}/power_now)
+    battery_energy_now=$(cat /sys/class/power_supply/${battery}/energy_now)
+    minutes_remaining=$(($battery_energy_now*60/$battery_power_now))
     hours_remaining=$(($minutes_remaining/60))
     minutes_remaining_partial=$(($minutes_remaining%60))
     if [ $minutes_remaining_partial -lt 10 ]; then

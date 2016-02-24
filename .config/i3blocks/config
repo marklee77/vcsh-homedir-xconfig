@@ -25,17 +25,26 @@ interval=120
 
 [defaultnet]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/defaultnet
-color=#85990
+color=#839496
 interval=5
 
-[battery]
+[battery0]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/battery BAT0
+color=#839496
+align=right
+interval=5
+signal=6
+
+[battery1]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/battery BAT1
+color=#839496
 align=right
 interval=5
 signal=6
 
 [volume]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/volume 1 Master
+color=#839496
 align=right
 min_width= 100%
 interval=once

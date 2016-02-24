@@ -6,17 +6,12 @@
 # The author uses one generated at icomoon.io by including all of the glyphs
 # from the  Meteocons, Ionicons, and Font Awesome icon libraries.
 
-from NetworkManager import NetworkManager as nm
-
 import os
 import pycurl
 import simplejson as json
 import sys
 
 from io import BytesIO
-
-if not nm.ActiveConnections:
-    exit(0)
 
 # keys and suggested values at http://openweathermap.org/weather-conditions
 # unicode values are based on icomoon.io icon font including Meteocons

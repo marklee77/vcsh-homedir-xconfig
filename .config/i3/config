@@ -1,5 +1,6 @@
 # solarized background color
-exec --no-startup-id exec hsetroot -solid '#002b36'
+exec --no-startup-id exec hsetroot -cover /lib/plymouth/themes/solar/star.png -tint '#839496'
+#exec --no-startup-id exec hsetroot -solid '#002b36'
 
 # fix keyboard
 exec --no-startup-id exec laptop-keyboard-set-layout
