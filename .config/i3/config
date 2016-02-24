@@ -104,16 +104,16 @@ bindsym $mod+a focus parent
 
 # switch to workspace
 # workspace_auto_back_and_forth yes
-bindsym $mod+1 exec i3-msg workspace 1  && laptop-pointer-set off
-bindsym $mod+2 exec i3-msg workspace 2  && laptop-pointer-set on
-bindsym $mod+3 exec i3-msg workspace 3  && laptop-pointer-set on
-bindsym $mod+4 exec i3-msg workspace 4  && laptop-pointer-set on
-bindsym $mod+5 exec i3-msg workspace 5  && laptop-pointer-set on
-bindsym $mod+6 exec i3-msg workspace 6  && laptop-pointer-set on
-bindsym $mod+7 exec i3-msg workspace 7  && laptop-pointer-set on
-bindsym $mod+8 exec i3-msg workspace 8  && laptop-pointer-set on
-bindsym $mod+9 exec i3-msg workspace 9  && laptop-pointer-set on
-bindsym $mod+0 exec i3-msg workspace 10 && laptop-pointer-set on
+bindsym $mod+1 exec i3-msg workspace 1
+bindsym $mod+2 exec i3-msg workspace 2
+bindsym $mod+3 exec i3-msg workspace 3
+bindsym $mod+4 exec i3-msg workspace 4
+bindsym $mod+5 exec i3-msg workspace 5
+bindsym $mod+6 exec i3-msg workspace 6
+bindsym $mod+7 exec i3-msg workspace 7
+bindsym $mod+8 exec i3-msg workspace 8
+bindsym $mod+9 exec i3-msg workspace 9
+bindsym $mod+0 exec i3-msg workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move workspace 1
@@ -175,28 +175,33 @@ bindsym $mod+o exec --no-startup-id exec transset -a -t 0.75
 # suspend
 bindsym XF86Sleep exec --no-startup-id exec laptop-smartsleep
 
-# monitor (need to test)
-bindsym XF86Display exec --no-startup-id exec laptop-screen-toggle-layout
-bindsym $mod+F4 exec --no-startup-id exec laptop-screen-toggle-layout
-
 # audio
 bindsym XF86AudioMute exec --no-startup-id exec laptop-volume-set toggle
-bindsym $mod+F5 exec --no-startup-id exec laptop-volume-set toggle
-bindsym XF86AudioRaiseVolume exec --no-startup-id exec laptop-volume-set 2%+ 
-bindsym $mod+F7 exec --no-startup-id exec laptop-volume-set 2%+ 
+bindsym $mod+F1 exec --no-startup-id exec laptop-volume-set toggle
 bindsym XF86AudioLowerVolume exec --no-startup-id exec laptop-volume-set 2%-
-bindsym $mod+F6 exec --no-startup-id exec laptop-volume-set 2%-
+bindsym $mod+F2 exec --no-startup-id exec laptop-volume-set 2%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id exec laptop-volume-set 2%+ 
+bindsym $mod+F3 exec --no-startup-id exec laptop-volume-set 2%+ 
 
 # micmute is not working...
-#bindsym XF87AudioMicMute exec --no-startup-id exec amixer -c 1 set Capture toggle
-bindsym $mod+F8 exec --no-startup-id exec amixer -c 1 set Capture toggle
+bindsym XF86AudioMicMute exec --no-startup-id exec amixer -c 1 set Capture toggle
+bindsym $mod+F4 exec --no-startup-id exec amixer -c 1 set Capture toggle
 
 # brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
-bindsym $mod+F9 exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
+bindsym $mod+F5 exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+2 i3blocks
-bindsym $mod+F10 exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+2 i3blocks
+bindsym $mod+F6 exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+2 i3blocks
 
+# monitor
+bindsym XF86Display exec --no-startup-id exec laptop-screen-toggle-layout
+bindsym $mod+F7 exec --no-startup-id exec laptop-screen-toggle-layout
+
+# wlan
+#bindsym XF86WLAN
+#bindsym $mod+F8
+
+# Tools Search LaunchA (view open programs?) Explorer
 # toggle pointer
 bindsym $mod+p exec --no-startup-id laptop-pointer-set
 
