@@ -18,7 +18,6 @@
 !.config/supervisord
 !.config/supervisord/config.d
 !.config/supervisord/config.d/xconfig
-!.dmrc
 !.gitignore.d
 !.gitignore.d/xconfig
 !.gmrunrc
