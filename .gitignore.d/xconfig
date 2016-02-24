@@ -12,6 +12,7 @@
 !.config/i3blocks
 !.config/i3blocks/*
 !.config/i3blocks/blocklets/*
+.config/i3blocks/blocklets/weather_apikey.txt
 !.config/mr
 !.config/mr/config.d
 !.config/mr/config.d/xconfig
