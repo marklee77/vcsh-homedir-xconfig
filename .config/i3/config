@@ -1,23 +1,9 @@
 # solarized background color
-exec --no-startup-id exec hsetroot -cover /lib/plymouth/themes/solar/star.png -tint '#839496'
+exec --no-startup-id exec laptop-screen-toggle-layout --nocycle
 #exec --no-startup-id exec hsetroot -solid '#002b36'
 
 # fix keyboard
-exec --no-startup-id exec laptop-keyboard-set-layout
-
-# applets
-#exec --no-startup-id exec nm-applet 
-#exec --no-startup-id exec system-config-printer-applet
-#exec --no-startup-id exec blueman-applet
-
-# unclutter
-#exec --no-startup-id exec unclutter -idle 5 -root
-
-# automount
-#exec --no-startup-id exec gvfs-automount
-
-# conky
-#exec --no-startup-id exec conky
+#exec --no-startup-id exec laptop-keyboard-set-layout
 
 set $mod Mod4
 new_window 1pixel
