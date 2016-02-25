@@ -1,5 +1,5 @@
 # solarized background color
-exec --no-startup-id exec laptop-screen-toggle-layout --nocycle
+exec --no-startup-id exec sleep 2 && laptop-screen-toggle-layout --nocycle
 
 set $mod Mod4
 new_window 1pixel
