@@ -7,10 +7,6 @@ autorestart=true
 command=compton
 autorestart=true
 
-[program:conky]
-command=conky
-autorestart=true
-
 [program:dunst]
 command=dunst
 autorestart=true
