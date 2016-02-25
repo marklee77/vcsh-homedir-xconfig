@@ -1,9 +1,5 @@
 # solarized background color
 exec --no-startup-id exec laptop-screen-toggle-layout --nocycle
-#exec --no-startup-id exec hsetroot -solid '#002b36'
-
-# fix keyboard
-#exec --no-startup-id exec laptop-keyboard-set-layout
 
 set $mod Mod4
 new_window 1pixel
