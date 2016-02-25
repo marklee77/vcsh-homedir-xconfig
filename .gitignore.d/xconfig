@@ -22,6 +22,9 @@
 !.gitignore.d
 !.gitignore.d/xconfig
 !.gmrunrc
+!.local
+!.local/bin
+!.local/bin/gvfs-automount
 !.terminfo
 !.terminfo/*
 !.Xresources
