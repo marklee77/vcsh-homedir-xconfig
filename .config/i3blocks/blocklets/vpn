@@ -17,7 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 prefix="\uf023"
-color="#859900"
 
 iface="${1:-bnep0}"
 
