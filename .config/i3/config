@@ -1,5 +1,6 @@
-# solarized background color
+# screen and keyboard
 exec --no-startup-id exec sleep 2 && laptop-screen-toggle-layout --nocycle
+exec --no-startup-id exec laptop-keyboard-set-layout
 
 set $mod Mod4
 new_window 1pixel
