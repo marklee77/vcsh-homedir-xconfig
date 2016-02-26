@@ -184,7 +184,8 @@ bindsym $mod+F7 exec --no-startup-id exec laptop-screen-toggle-layout
 #bindsym XF86WLAN
 #bindsym $mod+F8
 
-# Tools Search LaunchA (view open programs?) Explorer
+# Additional available Fn keys: Tools Search LaunchA Explorer
+
 # toggle pointer
 bindsym $mod+p exec --no-startup-id laptop-pointer-set
 
