@@ -1,5 +1,5 @@
 #!/bin/bash
-thresholds=(15 35 85 100)
+thresholds=(25 50 75 100)
 prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
 colors=("#dc322f" "#cb4b16" "#b58900" "#859900")
 charging_prefix="\uf111"
