@@ -1,8 +1,9 @@
 #!/bin/bash
 thresholds=(15 40 95 100)
 prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
-colors=("#dc322f" "#b58900" "#839496" "#859900")
+colors=("#dc322f" "#b58900" "#cb4b16" "#859900")
 charging_prefix="\uf111"
+inactive_color="#586e75"
 
 battery=${1:-BAT0}
 
@@ -25,9 +26,11 @@ done
 
 battery_status=$(cat /sys/class/power_supply/${battery}/status)
 
-if [ "$battery_status" = "Charging" ]; then
+case "$battery_status" in
+    Charging)
     prefix=$charging_prefix
-elif [ "$battery_status" = "Discharging" ]; then
+    ;;
+    Discharging)
     color=$discharge_color
     battery_power_now=$(cat /sys/class/power_supply/${battery}/power_now)
     battery_energy_now=$(cat /sys/class/power_supply/${battery}/energy_now)
@@ -38,7 +41,11 @@ elif [ "$battery_status" = "Discharging" ]; then
         minutes_remaining_partial="0$minutes_remaining_partial"
     fi
     time_remaining="$hours_remaining:$minutes_remaining_partial"
-fi
+    ;;
+    Unknown)
+    color=$inactive_color
+    ;;
+esac
 
 short_text="$prefix $battery_capacity%"
 full_text=$short_text
@@ -50,6 +57,6 @@ echo -e $full_text
 echo -e $short_text
 [ -n "$color" ] && echo $color
 
-[ $battery_capacity -le ${thresholds[0]} ] && exit 33
+#[ $battery_capacity -le ${thresholds[0]} ] && exit 33
 
 exit 0
