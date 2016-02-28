@@ -1,7 +1,7 @@
 #!/bin/bash
-thresholds=(15 40 95 100)
+thresholds=(15 35 85 100)
 prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
-colors=("#dc322f" "#b58900" "#cb4b16" "#859900")
+colors=("#dc322f" "#cb4b16" "#b58900" "#859900")
 charging_prefix="\uf111"
 inactive_color="#586e75"
 
@@ -57,6 +57,8 @@ echo -e $full_text
 echo -e $short_text
 [ -n "$color" ] && echo $color
 
-#[ $battery_capacity -le ${thresholds[0]} ] && exit 33
+if [ "$battery_status" = "Discharging" ] && [ $battery_capacity -le 7 ]; then
+    exit 33
+fi
 
 exit 0
