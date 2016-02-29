@@ -191,13 +191,11 @@ bindsym $mod+F7 exec --no-startup-id exec laptop-screen-toggle-layout
 bindsym $mod+p exec --no-startup-id laptop-pointer-set
 
 # screenshots
-bindsym Print exec --no-startup-id exec scrot
-bindsym Shift+Print exec --no-startup-id exec scrot -u
-bindsym $mod+Print exec --no-startup-id exec scrot -s
+bindsym $mod+Print exec --no-startup-id exec scrot -u
+bindsym $mod+Shift+Print exec --no-startup-id exec scrot -s
 
 # Assigns
 assign [class="Firefox"] 2
-assign [class="Uzbl"] 2
 
 # Floating Apps
 for_window [class="Gimp"] floating enable
