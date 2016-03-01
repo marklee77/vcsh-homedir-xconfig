@@ -191,7 +191,8 @@ bindsym $mod+F7 exec --no-startup-id exec laptop-screen-toggle-layout
 bindsym $mod+p exec --no-startup-id laptop-pointer-set
 
 # screenshots
-bindsym $mod+Print exec --no-startup-id exec scrot -u
+bindsym $mod+Print exec --no-startup-id sleep 0.25 && scrot -s
+bindsym $mod+Shift+Print exec --no-startup-id exec scrot -u
 
 # Assigns
 assign [class="Firefox"] 2
