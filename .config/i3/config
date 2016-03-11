@@ -144,8 +144,7 @@ bindsym $mod+Right       resize shrink left  10 px or 10 ppt
 bindsym $mod+Shift+L     resize grow   right 10 px or 10 ppt
 bindsym $mod+Shift+Right resize grow   right 10 px or 10 ppt
 
-bindsym $mod+Return mode "default"
-bindsym $mod+Escape mode "default"
+bindsym $mod+r mode "default"
 
 }
 
