@@ -33,5 +33,5 @@ autorestart=true
 redirect_stderr=true
 
 [program:xautolock]
-command=xautolock -time 10 -locker laptop-lock -killtime 20 -killer "on_ac_power || laptop-smartsleep" -secure
+command=xautolock -time 5 -locker laptop-lock -killtime 20 -killer "on_ac_power || laptop-smartsleep" -secure
 autorestart=true
