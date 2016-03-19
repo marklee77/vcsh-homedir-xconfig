@@ -74,9 +74,10 @@ urxvt.boldItalicFont:     xft:DejaVu Sans Mono for Powerline-14:style=Bold Obliq
 urxvt.intensityStyles:    false
 urxvt.scrollBar:          false
 urxvt.borderless:         true
+urxvt.internalBorder:     0
+urxvt.externalBorder:     0
 urxvt.transparent:        false
 urxvt.fading:             0
-urxvt.urlLauncher:        /usr/bin/firefox
 urxvt.savelines:          0
 urxvt.scrollWithBuffer:   false
 urxvt.skipScroll:         true
