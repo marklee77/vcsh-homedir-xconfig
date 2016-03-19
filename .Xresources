@@ -66,10 +66,10 @@
 *color14:                 S_base1
 *color15:                 S_base3
 
-urxvt.font:               xft:DejaVu Sans Mono for Powerline-8:style=Book
-urxvt.boldFont:           xft:DejaVu Sans Mono for Powerline-8:style=Bold
-urxvt.italicFont:         xft:DejaVu Sans Mono for Powerline-8:style=Oblique
-urxvt.boldItalicFont:     xft:DejaVu Sans Mono for Powerline-8:style=Bold Oblique
+urxvt.font:               xft:DejaVu Sans Mono for Powerline-14:style=Book
+urxvt.boldFont:           xft:DejaVu Sans Mono for Powerline-14:style=Bold
+urxvt.italicFont:         xft:DejaVu Sans Mono for Powerline-14:style=Oblique
+urxvt.boldItalicFont:     xft:DejaVu Sans Mono for Powerline-14:style=Bold Oblique
 
 urxvt.intensityStyles:    false
 urxvt.scrollBar:          false
