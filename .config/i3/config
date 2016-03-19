@@ -4,7 +4,7 @@ exec --no-startup-id exec laptop-set-background
 exec --no-startup-id exec laptop-keyboard-set-layout
 
 set $mod Mod4
-new_window pixel 1
+new_window none
 new_float normal 1
 hide_edge_borders both
 focus_follows_mouse no
