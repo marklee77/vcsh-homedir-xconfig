@@ -66,10 +66,10 @@
 *color14:                 S_base1
 *color15:                 S_base3
 
-urxvt.font:               xft:DejaVu Sans Mono for Powerline-14:style=Book
-urxvt.boldFont:           xft:DejaVu Sans Mono for Powerline-14:style=Bold
-urxvt.italicFont:         xft:DejaVu Sans Mono for Powerline-14:style=Oblique
-urxvt.boldItalicFont:     xft:DejaVu Sans Mono for Powerline-14:style=Bold Oblique
+urxvt.font:               xft:DejaVu Sans Mono for Powerline-12:style=Book
+urxvt.boldFont:           xft:DejaVu Sans Mono for Powerline-12:style=Bold
+urxvt.italicFont:         xft:DejaVu Sans Mono for Powerline-12:style=Oblique
+urxvt.boldItalicFont:     xft:DejaVu Sans Mono for Powerline-12:style=Bold Oblique
 
 urxvt.intensityStyles:    false
 urxvt.scrollBar:          false
@@ -86,7 +86,7 @@ urxvt.background:         [70]S_base03
 urxvt.saveLines:          0
 
 ! fix for ugly font spacing
-urxvt.letterSpace:        -1
+urxvt.letterSpace:        0
 
 xft.dpi:                  96
 xft.antialias:            true
