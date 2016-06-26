@@ -195,6 +195,7 @@ bindsym $mod+Shift+Print exec --no-startup-id exec scrot -u
 
 # Assigns
 assign [class="Firefox"] 2
+assign [title=".*Chromium.*"] 2
 
 # Floating Apps
 for_window [class="Gimp"] floating enable
