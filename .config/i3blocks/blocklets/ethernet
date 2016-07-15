@@ -27,7 +27,7 @@ exec 2>&1
 
 #state="$(cat /sys/class/net/$iface/operstate 2>/dev/null)"
 #if [ "$state" != "up" ]; then
-#	exit 0
+#    exit 0
 #fi
 
 ipv4addrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
