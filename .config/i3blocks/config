@@ -33,6 +33,11 @@ command=${XDG_CONFIG_HOME}/i3blocks/blocklets/vpn ppp1
 color=#839496
 interval=5
 
+[vpn2]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/vpn ppp2
+color=#839496
+interval=5
+
 [defaultnet]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/defaultnet
 color=#839496
