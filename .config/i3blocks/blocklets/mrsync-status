@@ -3,16 +3,16 @@
 info=""
 exitcode=0
 
-lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mrsync.lock"
-pidfile="${lockdir}/PID"
-otherpid=$(cat ${pidfile} 2>/dev/null)
-othercmd=$(ps --no-headers --format command --pid ${otherpid} 2>/dev/null)
+rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mrsync"
+pidfile="${rundir}/PID"
+otherpid=$(cat "${pidfile}" 2>/dev/null)
+othercmd=$(ps --no-headers --format command --pid "${otherpid}" 2>/dev/null)
 if [[ "${othercmd}" =~ .*mrsync.* ]]; then
     info="\uf021"
 fi
 
 rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mrsync"
-if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
+if ls "${rundir}/*.error" >/dev/null 2>&1; then
     exitcode=33
 fi
 
@@ -20,4 +20,4 @@ if [ -n "$info" ] || [ $exitcode -ne 0 ]; then
     echo -e "$info\uf233"
 fi
 
-exit $exitcode
+exit "$exitcode"
