@@ -4,25 +4,24 @@ info=""
 exitcode=0
 
 queuedir="${HOME}/.local/var/spool/msmtpqueue"
-if ls ${queuedir}/*.msmtp >/dev/null 2>/dev/null; then
+if ls "${queuedir}/*.msmtp" >/dev/null 2>&1; then
     info="\uf10e"
 fi
 
 inbox="${HOME}/.maildir/new"
-if ls ${inbox}/* >/dev/null 2>/dev/null; then
+if ls "${inbox}/*" >/dev/null 2>&1; then
     info="$info\uf105"
 fi
 
-lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mailsync.lock"
-pidfile="${lockdir}/PID"
-otherpid=$(cat ${pidfile} 2>/dev/null)
-othercmd=$(ps --no-headers --format command --pid ${otherpid} 2>/dev/null)
+rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mailsync"
+pidfile="${rundir}/PID"
+otherpid=$(cat "${pidfile}" 2>/dev/null)
+othercmd=$(ps --no-headers --format command --pid "${otherpid}" 2>/dev/null)
 if [[ "${othercmd}" =~ .*mailsync.* ]]; then
     info="\uf021"
 fi
 
-rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mailsync"
-if ls ${rundir}/*.error >/dev/null 2>/dev/null; then
+if ls "${rundir}/*.error" >/dev/null 2>&1; then
     exitcode=33
 fi
 
@@ -30,4 +29,4 @@ if [ -n "$info" ] || [ $exitcode -ne 0 ]; then
     echo -e "$info\uf132"
 fi
 
-exit $exitcode
+exit "$exitcode"
