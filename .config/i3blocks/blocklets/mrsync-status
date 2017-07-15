@@ -3,8 +3,8 @@
 info=""
 exitcode=0
 
-rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mrsync"
-pidfile="${rundir}/PID"
+lockdir="${XDG_RUNTIME_DIR:-${HOME}/.local/var}/mailsync.lock"
+pidfile="${lockdir}/PID"
 otherpid=$(cat "${pidfile}" 2>/dev/null)
 othercmd=$(ps --no-headers --format command --pid "${otherpid}" 2>/dev/null)
 if [[ "${othercmd}" =~ .*mrsync.* ]]; then
