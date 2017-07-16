@@ -4,12 +4,12 @@ info=""
 exitcode=0
 
 queuedir="${HOME}/.local/var/spool/msmtpqueue"
-if ls "${queuedir}/*.msmtp" >/dev/null 2>&1; then
+if find "${queuedir}" -name '*.msmtp' 2>/dev/null | read -r; then
     info="\uf10e"
 fi
 
 inbox="${HOME}/.maildir/new"
-if ls "${inbox}/*" >/dev/null 2>&1; then
+if [ "$(find "${inbox}" -type f 2>/dev/null | wc -l)" -gt 0 ]; then
     info="$info\uf105"
 fi
 
@@ -21,7 +21,7 @@ if [[ "${othercmd}" =~ .*mailsync.* ]]; then
     info="\uf021"
 fi
 
-if ls "${rundir}/*.error" >/dev/null 2>&1; then
+if [ "$(find "${rundir}" -type f -name "*.error" 2>/dev/null | wc -l)" -gt 0 ]; then
     exitcode=33
 fi
 
