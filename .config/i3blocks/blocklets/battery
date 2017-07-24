@@ -5,59 +5,48 @@ colors=("#dc322f" "#cb4b16" "#b58900" "#859900")
 charging_prefix="\u26a1"
 inactive_color="#586e75"
 
-battery=${1:-BAT0}
-
-scriptname="$(basename $0)"
-
-logfile="${HOME}/.local/var/log/${scriptname}.log"
-exec 3>&1
-exec 1>${logfile}
-exec 2>&1
-
-battery_capacity=$(cat /sys/class/power_supply/${battery}/capacity)
+battery="${1:-BAT0}"
+battery_capacity=$(cat "/sys/class/power_supply/${battery}/capacity")
+battery_status=$(cat "/sys/class/power_supply/${battery}/status")
 
 for i in $(seq 0 $((${#thresholds[@]}-1))); do
-    if [ $battery_capacity -le ${thresholds[i]} ]; then
-        prefix=${prefixes[i]}
-        discharge_color=${colors[i]}
+    if [ "${battery_capacity}" -le "${thresholds[i]}" ]; then
+        prefix="${prefixes[i]}"
+        discharge_color="${colors[i]}"
         break
     fi
 done
 
-battery_status=$(cat /sys/class/power_supply/${battery}/status)
-
-case "$battery_status" in
+case "${battery_status}" in
     Charging)
-    prefix=$charging_prefix
+    prefix="${charging_prefix}"
     ;;
     Discharging)
-    color=$discharge_color
-    battery_power_now=$(cat /sys/class/power_supply/${battery}/power_now)
-    battery_energy_now=$(cat /sys/class/power_supply/${battery}/energy_now)
-    minutes_remaining=$(($battery_energy_now*60/$battery_power_now))
-    hours_remaining=$(($minutes_remaining/60))
-    minutes_remaining_partial=$(($minutes_remaining%60))
-    if [ $minutes_remaining_partial -lt 10 ]; then
-        minutes_remaining_partial="0$minutes_remaining_partial"
+    color="${discharge_color}"
+    battery_power_now="$(cat "/sys/class/power_supply/${battery}/power_now")"
+    battery_energy_now="$(cat "/sys/class/power_supply/${battery}/energy_now")"
+    minutes_remaining="$((battery_energy_now * 60 / battery_power_now))"
+    hours_remaining="$((minutes_remaining / 60))"
+    minutes_remaining_partial="$((minutes_remaining % 60))"
+    if [ "${minutes_remaining_partial}" -lt 10 ]; then
+        minutes_remaining_partial="0${minutes_remaining_partial}"
     fi
-    time_remaining="$hours_remaining:$minutes_remaining_partial"
+    time_remaining="${hours_remaining}:${minutes_remaining_partial}"
     ;;
     Unknown)
-    color=$inactive_color
+    color="${inactive_color}"
     ;;
 esac
 
-short_text="$prefix $battery_capacity%"
-full_text=$short_text
-[ -n $time_remaining ] && full_text="$full_text $time_remaining"
+short_text="${prefix} ${battery_capacity}%"
+full_text="${short_text}"
+[ -n "${time_remaining}" ] && full_text="${full_text} ${time_remaining}"
 
-exec >&3
+echo -e "${full_text}"
+echo -e "${short_text}"
+[ -n "$color" ] && echo "${color}"
 
-echo -e $full_text
-echo -e $short_text
-[ -n "$color" ] && echo $color
-
-if [ "$battery_status" = "Discharging" ] && [ $battery_capacity -le 7 ]; then
+if [ "${battery_status}" = "Discharging" ] && [ "${battery_capacity}" -le 7 ]; then
     exit 33
 fi
 
