@@ -67,6 +67,7 @@
 *color15:                 S_base3
 
 urxvt.font:               xft:DejaVu Sans Mono for Powerline:size=14:style=Book
+!urxvt.font:               xft:DejaVu Sans Mono Nerd Font:size=14:style=Book
 urxvt.boldFont:           xft:DejaVu Sans Mono for Powerline:size=14:style=Bold
 urxvt.italicFont:         xft:DejaVu Sans Mono for Powerline:size=14:style=Oblique
 urxvt.boldItalicFont:     xft:DejaVu Sans Mono for Powerline:size=14:style=Bold Oblique
