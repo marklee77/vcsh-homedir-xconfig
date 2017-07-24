@@ -88,7 +88,7 @@ urxvt.saveLines:          0
 ! fix for ugly font spacing
 urxvt.letterSpace:        -1
 
-xft.dpi:                  -1
+!xft.dpi:                  -1
 xft.antialias:            true
 xft.rgba:                 rgb
 xft.hinting:              true

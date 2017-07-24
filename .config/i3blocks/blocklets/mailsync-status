@@ -6,13 +6,13 @@ exitcode=0
 queuedir="${HOME}/.local/var/spool/msmtpqueue"
 if find "${queuedir}" -name '*.msmtp' 2>/dev/null | read -r; then
     #info="\uf10e"
-    info="\uf431"
+    info="\uf062 "
 fi
 
 inbox="${HOME}/.maildir/new"
 if find "${inbox}" -type f 2>/dev/null | read -r; then
     #info="$info\uf105"
-    info="$info\uf433"
+    info="$info\uf063 "
 fi
 
 rundir="${XDG_RUNTIME_DIR:-${HOME}/.local/var/run}/mailsync"
@@ -20,8 +20,7 @@ pidfile="${rundir}/PID"
 otherpid=$(cat "${pidfile}" 2>/dev/null)
 othercmd=$(ps --no-headers --format command --pid "${otherpid}" 2>/dev/null)
 if [[ "${othercmd}" =~ .*mailsync.* ]]; then
-    #info="\uf021"
-    info="\uf47f"
+    info="\uf021 "
 fi
 
 if find "${rundir}" -name '*.error' 2>/dev/null | read -r; then
