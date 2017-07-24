@@ -1,8 +1,8 @@
 #!/bin/bash
-thresholds=(25 50 75 100)
-prefixes=("\uf243" "\uf242" "\uf241" "\uf240")
+thresholds=(10 35 60 90 100)
+prefixes=("\uf244" "\uf243" "\uf242" "\uf241" "\uf240")
 colors=("#dc322f" "#cb4b16" "#b58900" "#859900")
-charging_prefix="\uf111"
+charging_prefix="\uf1e6"
 inactive_color="#586e75"
 
 battery=${1:-BAT0}
