@@ -16,7 +16,6 @@ if find "${rundir}" -name '*.error' 2>/dev/null | read -r; then
 fi
 
 if [ -n "$info" ] || [ $exitcode -ne 0 ]; then
-    #echo -e "$info\uf233"
     echo -e "$info\ue709"
 fi
 
