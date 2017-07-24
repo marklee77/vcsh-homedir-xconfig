@@ -20,7 +20,8 @@ pidfile="${rundir}/PID"
 otherpid=$(cat "${pidfile}" 2>/dev/null)
 othercmd=$(ps --no-headers --format command --pid "${otherpid}" 2>/dev/null)
 if [[ "${othercmd}" =~ .*mailsync.* ]]; then
-    info="\uf021"
+    #info="\uf021"
+    info="\uf46a"
 fi
 
 if find "${rundir}" -name '*.error' 2>/dev/null | read -r; then
