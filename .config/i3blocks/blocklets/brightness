@@ -1,5 +1,5 @@
 #!/bin/bash
-prefix="\uf2dc"
+prefix="\uf0a3"
 
 scriptname="$(basename $0)"
 

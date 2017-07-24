@@ -1,5 +1,5 @@
 #!/bin/bash
-icons=('\uf108' '\uf10b' '\uf0c8')
+icons=('\uf434' '\uf432' '\uf04d')
 
 if [ -n "$BLOCK_BUTTON" ]; then
     laptop-screen-toggle-layout
