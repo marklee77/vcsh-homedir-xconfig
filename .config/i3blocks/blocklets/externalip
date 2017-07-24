@@ -1,11 +1,11 @@
 #!/bin/bash
-prefix="\uf2df" 
+prefix="\uf2df"
 
-scriptname="$(basename $0)"
+scriptname="$(basename "${BASH_SOURCE[0]}")"
 
 logfile="${HOME}/.local/var/log/${scriptname}.log"
 exec 3>&1
-exec 1>${logfile}
+exec 1>"${logfile}"
 exec 2>&1
 
 # ifconfig.co is another option
@@ -16,15 +16,15 @@ externalip=$(curl -s https://freegeoip.net/csv/ | perl -lne 'print $1 if /^((?:\
 # curl ipinfo.io/ip
 [ -z "$externalip" ] && exit 0
 
-defaultdev=$(ip route | perl -ne 'print "$1\n" if /^default\s.*\sdev\s([^\s]+)/')
-defaultdevaddrs=($(ip addr show ${iface} | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
-defaultip=${defaultdevaddrs[0]}
+iface="$(ip r | perl -ne 'print "$1\n" if /^default\s.*\sdev\s([^\s]+)/')"
+addrs=($(ip addr show "${iface}" | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
+defaultip="${addrs[0]}"
 [ "$externalip" = "$defaultip" ] && exit 0
 
 full_text="$prefix $externalip"
 
 exec >&3
 
-echo -e $full_text
+echo -e "$full_text"
 
 exit 0
