@@ -2,7 +2,7 @@
 thresholds=(10 35 60 90 100)
 prefixes=("\uf244" "\uf243" "\uf242" "\uf241" "\uf240")
 colors=("#dc322f" "#cb4b16" "#b58900" "#859900")
-charging_prefix="\uf0e7"
+charging_prefix="\u26a1"
 inactive_color="#586e75"
 
 battery=${1:-BAT0}

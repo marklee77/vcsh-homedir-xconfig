@@ -87,7 +87,7 @@ color=#839496
 interval=900
 
 [time]
-command=date '+%Y-%m-%d %H:%M'
+command=date '+ %Y-%m-%d %H:%M'
 color=#839496
 align=right
 min_width=0000-00-00 00:00
