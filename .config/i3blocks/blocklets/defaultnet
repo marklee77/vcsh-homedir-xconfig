@@ -1,7 +1,7 @@
 #!/bin/bash
-scriptdir=$(dirname $0)
+scriptdir="$(dirname "${BASH_SOURCE[0]}")"
 
-iface=$(ip route | perl -lne 'print $1 if /^default\b.*?\sdev\s(\S+)/')
+iface="$(ip r | awk '$1 == "default" { print $NF; exit }')"
 case $iface in
     tun*|ppp*)
     $scriptdir/vpn $iface
