@@ -11,7 +11,7 @@ focus_follows_mouse no
 
 # font for window titles. ISO 10646 = Unicode
 #font pango:DejaVu Sans Mono for Powerline, IcoMoon 9
-font pango:DejaVu Sans Mono Nerd Font 10
+font pango:DejaVu Sans Mono Nerd Font 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
