@@ -17,7 +17,7 @@ fi
 
 if [ -n "$info" ] || [ $exitcode -ne 0 ]; then
     #echo -e "$info\uf233"
-    echo -e "$info\ue708"
+    echo -e "$info\ue709"
 fi
 
 exit "$exitcode"
