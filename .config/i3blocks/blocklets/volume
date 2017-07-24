@@ -8,30 +8,30 @@ muted_color="#dc322f"
 card=${1:-0}
 control=${2:-Master}
 
-scriptname="$(basename $0)"
+scriptname="$(basename "${BASH_SOURCE[0]}")"
 
 logfile="${HOME}/.local/var/log/${scriptname}.log"
 exec 3>&1
-exec 1>${logfile}
+exec 1>"${logfile}"
 exec 2>&1
 
 if [ -n "$BLOCK_BUTTON" ]; then
     laptop-volume-set toggle
 fi
 
-info=($(amixer -c $card get $control | perl -ne 'print "$1 $2\n" if /^\s*Mono:.*\[(.+)%\].*\[.*\].*\[(.+)\].*/'))
+info=($(amixer -c "${card}" get "${control}" | perl -ne 'print "$1 $2\n" if /^\s*Mono:.*\[(.+)%\].*\[.*\].*\[(.+)\].*/'))
 
-[ -z "${info}" ] && exit 0
+[ -z "${info[*]}" ] && exit 0
 
 volume=${info[0]}
 status=${info[1]}
 
-if [ $status = "off" ]; then
+if [ "${status}" = "off" ]; then
   prefix=$muted_prefix
   color=$muted_color
 else
     for i in $(seq 0 $((${#thresholds[@]}-1))); do
-        if [ $volume -le ${thresholds[i]} ]; then
+        if [ "${volume}" -le "${thresholds[i]}" ]; then
             prefix=${prefixes[i]}
             break
         fi

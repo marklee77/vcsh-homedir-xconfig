@@ -1,6 +1,6 @@
 #!/bin/bash
 thresholds=(25 50 75 100)
-prefixes=("\uf112" "\uf115" "\uf114" "\uf113")
+prefixes=("\uf243" "\uf242" "\uf241" "\uf240")
 colors=("#dc322f" "#cb4b16" "#b58900" "#859900")
 charging_prefix="\uf111"
 inactive_color="#586e75"
