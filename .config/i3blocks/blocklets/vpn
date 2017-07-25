@@ -1,17 +1,10 @@
 #!/bin/bash
 prefix="\uf023"
 
-iface="${1:-bnep0}"
+iface="${1:-ppp0}"
 
-scriptname="$(basename "${BASH_SOURCE[0]}")"
-
-logfile="${HOME}/.local/var/log/${scriptname}.log"
-exec 3>&1
-exec 1>"${logfile}"
-exec 2>&1
-
-ipv4addrs=($(ip addr show "${iface}" | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
-ipv6addrs=($(ip addr show "${iface}" | perl -ne 'print "$1\n" if /inet6 (\S+).*scope global/'))
+ipv4addrs=($(ip addr show "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
+ipv6addrs=($(ip addr show "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet6 (\S+).*scope global/'))
 if [ ${#ipv4addrs} = 0 ] && [ ${#ipv6addrs} = 0 ]; then
     exit 0
 fi
@@ -19,15 +12,7 @@ fi
 full_text="$prefix ${ipv4addrs[*]} ${ipv6addrs[0]}"
 short_text="$prefix ${ipv4addrs[0]}"
 
-vpn_name=$(nmcli con status | perl -ane 'print $F[0] if $F[3] eq "yes" and $F[4] eq "yes"')
-if [ -n "$vpn_name" ]; then
-    full_text="$full_text $vpn_name"
-    short_text="$short_text $vpn_name"
-fi
-
-exec >&3
-
-echo -e "$full_text"
-echo -e "$short_text"
+echo -e "${full_text}"
+echo -e "${short_text}"
 
 exit 0

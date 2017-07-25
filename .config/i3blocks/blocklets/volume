@@ -8,14 +8,7 @@ muted_color="#dc322f"
 card=${1:-0}
 control=${2:-Master}
 
-scriptname="$(basename "${BASH_SOURCE[0]}")"
-
-logfile="${HOME}/.local/var/log/${scriptname}.log"
-exec 3>&1
-exec 1>"${logfile}"
-exec 2>&1
-
-if [ -n "$BLOCK_BUTTON" ]; then
+if [ -n "${BLOCK_BUTTON}" ]; then
     laptop-volume-set toggle
 fi
 
@@ -23,28 +16,26 @@ info=($(amixer -c "${card}" get "${control}" | perl -ne 'print "$1 $2\n" if /^\s
 
 [ -z "${info[*]}" ] && exit 0
 
-volume=${info[0]}
-status=${info[1]}
+volume="${info[0]}"
+status="${info[1]}"
 
 if [ "${status}" = "off" ]; then
-  prefix=$muted_prefix
-  color=$muted_color
+  prefix="${muted_prefix}"
+  color="${muted_color}"
 else
     for i in $(seq 0 $((${#thresholds[@]}-1))); do
         if [ "${volume}" -le "${thresholds[i]}" ]; then
-            prefix=${prefixes[i]}
+            prefix="${prefixes[i]}"
             break
         fi
     done
 fi
 
-short_text="$prefix $volume%"
-full_text=$short_text
+short_text="${prefix} ${volume}%"
+full_text="${short_text}"
 
-exec >&3
-
-echo -e $full_text
-echo -e $short_text
-[ -n $color ] && echo $color
+echo -e "${full_text}"
+echo -e "${short_text}"
+[ -n "${color}" ] && echo "${color}"
 
 exit 0
