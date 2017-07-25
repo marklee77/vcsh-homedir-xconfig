@@ -1,5 +1,4 @@
 #!/bin/bash
-
 info=""
 exitcode=0
 
@@ -25,7 +24,7 @@ if find "${rundir}" -name '*.error' 2>/dev/null | read -r; then
     exitcode=33
 fi
 
-if [ -n "$info" ] || [ $exitcode -ne 0 ]; then
+if [ -n "$info" ] || [ "${exitcode}" -ne 0 ]; then
     echo -e "$info\uf0e0"
 fi
 
