@@ -33,12 +33,11 @@ try:
     # read apikey from text file
     apikey = open(os.path.join(scriptdir, 'weather_apikey.txt'),
                   'r').read().rstrip()
-
     params = {'apikey': apikey}
 
     # get geo info
     buf = BytesIO()
-    c.setopt(c.URL, "https://freegeoip.net/json/")
+    c.setopt(c.URL, "http://freegeoip.net/json/")
     c.setopt(c.WRITEDATA, buf)
     c.perform()
     geoinfo = json.loads(buf.getvalue())
@@ -60,7 +59,8 @@ try:
                   u' {:d}\u00b0'.format(int(weatherinfo['main']['temp']))
                   ).encode('utf-8')
 
-except Exception:
+except Exception as e:
+    print e
     exit(0)
 
 print short_text

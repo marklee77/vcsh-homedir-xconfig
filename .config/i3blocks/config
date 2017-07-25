@@ -13,11 +13,6 @@ color=#839496
 interval=once
 signal=5
 
-#[weather]
-#command=${XDG_CONFIG_HOME}/i3blocks/blocklets/weather
-#color=#839496
-#interval=600
-
 [external ip]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/externalip
 color=#839496
