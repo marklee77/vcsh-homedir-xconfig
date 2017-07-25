@@ -1,19 +1,10 @@
 #!/bin/bash
 prefix="\uf0ac"
 
-scriptname="$(basename "${BASH_SOURCE[0]}")"
-
-logfile="${HOME}/.local/var/log/${scriptname}.log"
-exec 3>&1
-exec 1>"${logfile}"
-exec 2>&1
-
 # ifconfig.co is another option
 externalip=$(curl -s https://freegeoip.net/csv/ | perl -lne 'print $1 if /^((?:\d{1,3}\.){3}\d{1,3}),/')
-#if [ -z "$externalip" ]; then
-#    externalip=$(curl -s ifconfig.me/ip | perl -ne 'print if /^(?:\d{1,3}\.){3}\d{1,3}$/')
-#fi
-# curl ipinfo.io/ip
+[ -z "$externalip" ] && externalip=$(curl -s https://ifconfig.co/ip 2>/dev/null)
+[ -z "$externalip" ] && externalip=$(curl -s https://ipinfo.io/ip 2>/dev/null)
 [ -z "$externalip" ] && exit 0
 
 iface="$(ip r | perl -ne 'print "$1\n" if /^default\s.*\sdev\s([^\s]+)/')"
@@ -22,8 +13,6 @@ defaultip="${addrs[0]}"
 [ "$externalip" = "$defaultip" ] && exit 0
 
 full_text="$prefix $externalip"
-
-exec >&3
 
 echo -e "$full_text"
 
