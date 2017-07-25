@@ -1,0 +1,41 @@
+#!/bin/bash
+iface="${1:-"$(ip r | awk '$1 == "default" { print $NF; exit }')"}"
+
+ipv4addrs=($(ip a s "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
+ipv6addrs=($(ip a s "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet6 (\S+).*scope global/'))
+ipaddrs=("${ipv4addrs[@]}")
+[ -n "${ipv6addrs[0]}" ] && ipaddrs=("${ipaddrs[@]}" "${ipv6addrs[0]}")
+
+[ -z "${ipaddrs[*]}" ] && exit 0
+
+case "${iface}" in
+    bnep*)
+        prefix="\uf294"
+    ;;
+    eth*)
+        prefix="\uf402"
+    ;;
+    usb*)
+        prefix="\uf287"
+    ;;
+    wlan*)
+        prefix="\uf1eb"
+        essid="$(iwgetid -r "${iface}" | strings)"
+        IFS=, read -r speed quality <<< "$(iwconfig "${iface}" | perl -0ne 'print "$1,", eval "int(100*$2)" if /Rate=(.+?\/s).*Quality=([^\s]+)/ms')"
+        postfix="(${quality}% at ${essid}, ${speed})"
+        thresholds=(15 30 50 100)
+        colors=("#dc322f" "#b58900" "#839496" "#859900")
+        for i in $(seq 0 $((${#thresholds[@]}-1))); do
+            if [ "${quality}" -le "${thresholds[i]}" ]; then
+                color="${colors[i]}"
+                break
+            fi
+        done
+    ;;
+esac
+
+echo -e "${prefix} ${ipaddrs[*]} ${postfix}"
+echo -e "${prefix} ${ipaddrs[0]}"
+[ -n "${color}" ] && echo "${color}"
+
+exit 0
