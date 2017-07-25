@@ -66,10 +66,10 @@
 *color14:                 S_base1
 *color15:                 S_base3
 
-urxvt.font:               xft:DejaVu Sans Mono Nerd Font:style=Book:size=14
-urxvt.boldFont:           xft:DejaVu Sans Mono Nerd Font:tyle=Bold:size=14
-urxvt.italicFont:         xft:DejaVu Sans Mono Nerd Font:style=Oblique:size=14
-urxvt.boldItalicFont:     xft:DejaVu Sans Mono Nerd Font:style=Bold Oblique:size=14
+urxvt.font:               xft:DejaVu Sans Mono Nerd Font:style=Book:size=13
+urxvt.boldFont:           xft:DejaVu Sans Mono Nerd Font:tyle=Bold:size=13
+urxvt.italicFont:         xft:DejaVu Sans Mono Nerd Font:style=Oblique:size=13
+urxvt.boldItalicFont:     xft:DejaVu Sans Mono Nerd Font:style=Bold Oblique:size=13
 
 urxvt.intensityStyles:    false
 urxvt.scrollBar:          false

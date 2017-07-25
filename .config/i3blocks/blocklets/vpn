@@ -3,14 +3,15 @@ prefix="\uf023"
 
 iface="${1:-ppp0}"
 
-ipv4addrs=($(ip addr show "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
-ipv6addrs=($(ip addr show "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet6 (\S+).*scope global/'))
-if [ ${#ipv4addrs} = 0 ] && [ ${#ipv6addrs} = 0 ]; then
-    exit 0
-fi
+ipv4addrs=($(ip a s "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
+ipv6addrs=($(ip a s "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet6 (\S+).*scope global/'))
+ipaddrs=("${ipv4addrs[@]}")
+[ -n "${ipv6addrs[0]}" ] && ipaddrs=("${ipaddrs[@]}" "${ipv6addrs[0]}")
 
-full_text="$prefix ${ipv4addrs[*]} ${ipv6addrs[0]}"
-short_text="$prefix ${ipv4addrs[0]}"
+[ -z "${ipaddrs[*]}" ] && exit 0
+
+full_text="${prefix} ${ipaddrs[*]}"
+short_text="${prefix} ${ipaddrs[0]}"
 
 echo -e "${full_text}"
 echo -e "${short_text}"
