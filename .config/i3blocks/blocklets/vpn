@@ -2,6 +2,7 @@
 prefix="\uf023"
 
 iface="${1:-ppp0}"
+name="${2}"
 
 ipv4addrs=($(ip a s "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
 ipv6addrs=($(ip a s "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet6 (\S+).*scope global/'))
@@ -10,8 +11,8 @@ ipaddrs=("${ipv4addrs[@]}")
 
 [ -z "${ipaddrs[*]}" ] && exit 0
 
-full_text="${prefix} ${ipaddrs[*]}"
-short_text="${prefix} ${ipaddrs[0]}"
+full_text="${prefix} ${name} ${ipaddrs[*]}"
+short_text="${prefix} ${name} ${ipaddrs[0]}"
 
 echo -e "${full_text}"
 echo -e "${short_text}"
