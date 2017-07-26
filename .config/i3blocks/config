@@ -76,11 +76,6 @@ min_width=
 interval=once
 signal=3
 
-[exchangerate]
-command=curl -s "https://www.google.com/finance/converter?a=1&from=GBP&to=USD" | sed -nr '/^.*<span class=bld>(.*)<\/span>.*/s//\1/p'
-color=#839496
-interval=900
-
 [time]
 command=date '+ %Y-%m-%d %H:%M'
 color=#839496
