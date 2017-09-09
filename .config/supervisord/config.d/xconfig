@@ -28,10 +28,10 @@ command=urxvtd
 autorestart=true
 
 [program:xflux]
-#command=xflux -l 52 -g 0 -nofork
+command=xflux -l 52 -g 0 -nofork
 #command=xflux -l 30 -g -81 -nofork
 #command=xflux -l 37 -g -122 -nofork
-command=xflux -l -34 -g 151 -nofork
+#command=xflux -l -34 -g 151 -nofork
 autorestart=true
 redirect_stderr=true
 
