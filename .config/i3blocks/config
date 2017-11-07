@@ -53,7 +53,7 @@ interval=5
 signal=6
 
 [volume]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/volume 1 Master
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/volume 0 Master
 color=#839496
 align=right
 min_width= 100%
