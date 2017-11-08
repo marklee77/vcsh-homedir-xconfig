@@ -1,5 +1,5 @@
 #!/bin/bash
-iface="${1:-"$(ip r | awk '$1 == "default" { print $NF; exit }')"}"
+iface="${1:-"$(ip r | sed -nr '/^default\s.*\sdev\s(\S+).*$/{s//\1/p;q}')"}"
 
 ipv4addrs=($(ip a s "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet (\S+).*scope global/'))
 ipv6addrs=($(ip a s "${iface}" 2>/dev/null | perl -ne 'print "$1\n" if /inet6 (\S+).*scope global/'))
