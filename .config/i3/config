@@ -163,18 +163,18 @@ bindsym XF86AudioMute exec --no-startup-id exec laptop-volume-set toggle
 bindsym $mod+F1 exec --no-startup-id exec laptop-volume-set toggle
 bindsym XF86AudioLowerVolume exec --no-startup-id exec laptop-volume-set 2%-
 bindsym $mod+F2 exec --no-startup-id exec laptop-volume-set 2%-
-bindsym XF86AudioRaiseVolume exec --no-startup-id exec laptop-volume-set 2%+ 
-bindsym $mod+F3 exec --no-startup-id exec laptop-volume-set 2%+ 
+bindsym XF86AudioRaiseVolume exec --no-startup-id exec laptop-volume-set 2%+
+bindsym $mod+F3 exec --no-startup-id exec laptop-volume-set 2%+
 
 # micmute is not working...
-bindsym XF86AudioMicMute exec --no-startup-id exec amixer -c 1 set Capture toggle
-bindsym $mod+F4 exec --no-startup-id exec amixer -c 1 set Capture toggle
+bindsym XF86AudioMicMute exec --no-startup-id exec amixer set Capture toggle
+bindsym $mod+F4 exec --no-startup-id exec amixer set Capture toggle
+
+# F5 and F6?
 
 # brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
-bindsym $mod+F5 exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+2 i3blocks
-bindsym $mod+F6 exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+2 i3blocks
+#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2 -time 0 && pkill -RTMIN+2 i3blocks
+#bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 2 -time 0 && pkill -RTMIN+2 i3blocks
 
 # monitor
 bindsym XF86Display exec --no-startup-id exec laptop-screen-toggle-layout
