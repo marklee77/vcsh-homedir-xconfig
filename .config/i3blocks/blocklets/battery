@@ -25,7 +25,7 @@ case "${battery_status}" in
     color="${discharge_color}"
     battery_charge_now="$(cat "/sys/class/power_supply/${battery}/charge_now")"
     battery_current_now="$(cat "/sys/class/power_supply/${battery}/current_now")"
-    minutes_remaining="$((battery_charge_now / battery_current_now))"
+    minutes_remaining="$((60 * battery_charge_now / battery_current_now))"
     hours_remaining="$((minutes_remaining / 60))"
     minutes_remaining_partial="$((minutes_remaining % 60))"
     if [ "${minutes_remaining_partial}" -lt 10 ]; then
