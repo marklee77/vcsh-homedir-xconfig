@@ -1,11 +1,13 @@
 #!/bin/bash
 prefix="\uf0a3"
 
-brightness="$(xbacklight 2>/dev/null)"
+backlight_curr_brightness="$(cat /sys/class/backlight/intel_backlight/brightness)"
+backlight_max_brightness="$(cat /sys/class/backlight/intel_backlight/max_brightness)"
+backlight_curr_brightness_pct="$((100*backlight_curr_brightness/backlight_max_brightness))"
 
-[ -z "${brightness}" ] && exit 0
+[ -z "${backlight_curr_brightness_pct}" ] && exit 0
 
-short_text="${prefix} ${brightness%%.*}%"
+short_text="${prefix} ${backlight_curr_brightness_pct}%"
 full_text="${short_text}"
 
 echo -e "${full_text}"
