@@ -12,13 +12,13 @@ case "${iface}" in
     bnep*)
         prefix="\uf294"
     ;;
-    eth*|enp*)
+    eth*|en*)
         prefix="\uf402"
     ;;
-    usb*|enx*)
+    usb*|sl*)
         prefix="\uf287"
     ;;
-    wlan*|wlp*)
+    wlan*|wl*)
         prefix="\uf1eb"
         essid="$(iwgetid -r "${iface}" | strings)"
         IFS=, read -r speed quality <<< "$(iwconfig "${iface}" | perl -0ne 'print "$1,", eval "int(100*$2)" if /Rate=(.+?\/s).*Quality=([^\s]+)/ms')"
