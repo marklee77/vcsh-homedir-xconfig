@@ -174,10 +174,10 @@ bindsym $mod+F4 exec --no-startup-id exec amixer set Capture toggle
 # what are F5, F6, F8, F10, F11, F12?
 #
 # brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id laptop-adjust-backlight-brightness -2%
-bindsym $mod+F11 exec --no-startup-id laptop-adjust-backlight-brightness -2%
-bindsym XF86MonBrightnessUp exec --no-startup-id laptop-adjust-backlight-brightness +2%
-bindsym $mod+F12 exec --no-startup-id laptop-adjust-backlight-brightness +2%
+bindsym XF86MonBrightnessDown exec --no-startup-id laptop-adjust-backlight-brightness -1%
+bindsym $mod+F11 exec --no-startup-id laptop-adjust-backlight-brightness -1%
+bindsym XF86MonBrightnessUp exec --no-startup-id laptop-adjust-backlight-brightness +1%
+bindsym $mod+F12 exec --no-startup-id laptop-adjust-backlight-brightness +1%
 
 # monitor
 bindsym XF86Display exec --no-startup-id exec laptop-screen-toggle-layout
