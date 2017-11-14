@@ -202,6 +202,7 @@ for_window [class="PlayOnLinux"] floating enable
 for_window [class="Skype"] floating enable
 for_window [title="Cura.*"] floating enable
 for_window [class="fontforge"] floating enable
+for_window [id="Cisco AnyConnect Secure Mobility Client"] floating enable
 
 # Firefox
 for_window [title="Library"] floating enable
