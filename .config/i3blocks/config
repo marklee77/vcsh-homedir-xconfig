@@ -19,7 +19,7 @@ color=#839496
 interval=120
 
 [vpn0]
-command=${XDG_CONFIG_HOME}/i3blocks/blocklets/vpn cscotun0 shazam
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/vpn cscotun0
 color=#839496
 interval=5
 
