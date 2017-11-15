@@ -203,6 +203,7 @@ for_window [class="Skype"] floating enable
 for_window [title="Cura.*"] floating enable
 for_window [class="fontforge"] floating enable
 for_window [class="Vpnui"] floating enable
+for_window [class="System-config-printer.py"] floating enable
 
 # Firefox
 for_window [title="Library"] floating enable
