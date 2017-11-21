@@ -211,8 +211,14 @@ for_window [title="Firefox Preferences"] floating enable
 
 # i3bar
 bar {
+  output primary
   position top
   status_command exec i3blocks
+  tray_output primary
+}
+
+bar {
+  position top
   tray_output primary
 }
 
