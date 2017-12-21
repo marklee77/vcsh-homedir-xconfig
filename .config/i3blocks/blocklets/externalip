@@ -5,17 +5,16 @@ externalip4="$(curl -4s https://freegeoip.net/csv/ | perl -lne 'print $1 if /^((
 [ -z "${externalip4}" ] && externalip4="$(curl -4s https://ifconfig.co/ip 2>/dev/null)"
 [ -z "${externalip4}" ] && externalip4="$(curl -4s https://ipinfo.io/ip 2>/dev/null)"
 
-externalip6="$(curl -6s https://freegeoip.net/csv/ | perl -lne 'print $1 if /^((?:\d{1,3}\.){3}\d{1,3}),/')"
-[ -z "${externalip6}" ] && externalip6="$(curl -6s https://ifconfig.co/ip 2>/dev/null)"
-[ -z "${externalip6}" ] && externalip6="$(curl -6s https://ipinfo.io/ip 2>/dev/null)"
-
-[ -z "${externalip}" ] && exit 0
+[ -z "${externalip4}" ] && exit 0
 
 iface="$(ip r | perl -ne 'print "$1\n" if /^default\s.*\sdev\s([^\s]+)/')"
 addrs=($(ip addr show "${iface}" | perl -ne 'print "$1\n" if /inet (.+)\/.*scope global/'))
-defaultip="${addrs[0]}"
-[ "${externalip}" = "${defaultip}" ] && exit 0
+defaultip4="${addrs[0]}"
+[ "${externalip4}" = "${defaultip4}" ] && exit 0
 
-echo -e "${prefix} ${externalip}"
+short_text="${prefix} ${externalip4}"
+long_text="${short_text}"
 
+echo -e "${long_text}"
+echo -e "${short_text}"
 exit 0
