@@ -15,6 +15,10 @@ autorestart=true
 command=gvfs-automount
 autorestart=true
 
+[program:pulseaudio
+command=pulseaudio --daemonize=false --log-level=3 --log-target=stderr
+autorestart=true
+
 [program:unclutter]
 command=unclutter -idle 5 -root
 autorestart=true
