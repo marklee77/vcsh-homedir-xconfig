@@ -28,6 +28,11 @@ command=${XDG_CONFIG_HOME}/i3blocks/blocklets/vpn tun0 shazam
 color=#839496
 interval=5
 
+[vpn2580]
+command=${XDG_CONFIG_HOME}/i3blocks/blocklets/vpnproxy shazam 2580
+color=#839496
+interval=5
+
 [defaultnet]
 command=${XDG_CONFIG_HOME}/i3blocks/blocklets/network
 color=#839496

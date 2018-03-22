@@ -1,0 +1,16 @@
+#!/bin/bash
+prefix="\uf023"
+
+name="$1"
+port="$2"
+
+
+nc -zw1 127.0.0.1 "$port" || exit 0
+
+full_text="$prefix $name $port"
+short_text="$full_text"
+
+echo -e "$full_text"
+echo -e "$short_text"
+
+exit 0

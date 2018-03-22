@@ -29,6 +29,9 @@ bindsym $mod+d exec exec dmenu_run -b
 # start screensaver lock
 bindsym Control+$mod+l exec --no-startup-id exec laptop-lock
 
+# toggle vpn proxy
+bindsym Control+$mod+p exec --no-startup-id exec shazam-vpn-proxy
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
