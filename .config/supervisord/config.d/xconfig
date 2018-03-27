@@ -34,3 +34,7 @@ autorestart=true
 [program:xautolock]
 command=xautolock -time 5 -locker laptop-lock -killtime 20 -killer "on_ac_power || laptop-smartsleep" -secure
 autorestart=true
+
+[program:clipmenud]
+command=clipmenud
+autorestart=true
