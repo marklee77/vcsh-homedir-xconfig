@@ -31,6 +31,7 @@ bindsym Control+$mod+l exec --no-startup-id exec laptop-lock
 
 # toggle vpn proxy
 bindsym Control+$mod+p exec --no-startup-id exec shazam-vpn-proxy
+bindsym Control+$mod+d exec --no-startup-id exec dss-vpn-proxy
 
 # clipmenu
 bindsym $mod+i exec --no-startup-id exec clipmenu
